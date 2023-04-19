@@ -1,14 +1,14 @@
-import App from "../App";
-import Contact from './Contact';
-import Booking from './Booking';
-import LandingPage from "./LandingPage";
-import NotFound from './NotFound';
+import App from "./App";
+import { createBrowserRouter } from "react-router-dom";
+import  Contact  from './components/Contact';
+import  Booking  from './components/Booking';
+import { LandingPage } from "./components/LandingPage";
+import  Admin  from './components/Admin';
 
 export const router = createBrowserRouter([
     {
         path: '/',
-        element: <LandingPage />, // Mirelles page
-        errorElement: <NotFound />,
+        element: <LandingPage />,
         children: [
             {
                 path: '/',
@@ -16,10 +16,10 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/contact',
-                element: <Contact /> // Martins page
+                element: <Contact />
             }, {
                 path: '/booking',
-                element: <Booking /> // Max page
+                element: <Booking />
             }, {
                 path: '/admin',
                 element: <Admin />
@@ -27,4 +27,4 @@ export const router = createBrowserRouter([
         ]
 
     }
-])
+]);
