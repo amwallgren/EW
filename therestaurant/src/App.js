@@ -1,16 +1,18 @@
-import './App.css';
-import Booking from './components/Booking';
-import Contact from './components/Contact';
-import { LandingPage } from './components/landingPage';
+
+import React from "react";
+import "./App.css";
+import BookingSystem from "./components/Booking/BookingSystem";
 
 function App() {
   return (
-    <div className='App'>
-      <LandingPage />
-      <Booking />
-      <Contact />
-    </div> 
-      
+    <div className="App">
+      <header className="App-header">
+        <h1>Restaurant Booking System</h1>
+      </header>
+      <main>
+        <BookingSystem />
+      </main>
+    </div>
   );
 }
 
