@@ -2,7 +2,8 @@
   text-align: center;
 }
 * {
-  background-color: rgb(112, 123, 167);
+  background-color: rgb(99, 125, 110);
+  color: antiquewhite;
 }
 
 .App-logo {
@@ -39,4 +40,8 @@
   to {
     transform: rotate(360deg);
   }
+}
+/* HUMAN WRITTEN CSS GOES HERE */
+.ewHeader {
+  height: 500px;
 }
