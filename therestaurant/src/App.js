@@ -4,6 +4,7 @@ import './App.css';
 import { LandingPage } from './components/LandingPage';
 import BookingSystem from "./components/Booking/BookingSystem";
 import Contact from './components/contact/Contact';
+import { Menu } from './components/Menu/Menu';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/' element={<LandingPage />} />
         <Route path='/bookingsystem' element={<BookingSystem />} />
         <Route path='/contact' element={<Contact />} />
+        <Route path='/menu' element={<Menu />} />
       </Routes>
 
     </div> 
