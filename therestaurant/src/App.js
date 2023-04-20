@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import { LandingPage } from './components/LandingPage';
 import BookingSystem from "./components/Booking/BookingSystem";
-// lägg in Martins komponent Contact här 
+import Contact from './components/contact/Contact';
 
 function App() {
   return (
@@ -19,5 +19,5 @@ function App() {
       </Routes>
 
     </div> 
-
+  )};
 export default App;
