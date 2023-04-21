@@ -1,5 +1,4 @@
 import { Outlet } from "react-router-dom";
-// figure out how to import images into component 
 import ew from '../images/ew.png';
  
  export const LandingPage = () => {
