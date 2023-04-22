@@ -1,25 +1,22 @@
 
-import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import { LandingPage } from './components/LandingPage';
+import { Routes, Route } from 'react-router-dom';
+import { LandingPage } from './components/LandingPage/LandingPage';
 import BookingSystem from "./components/Booking/BookingSystem";
 import Contact from './components/contact/Contact';
+import { Admin } from './components/Admin/Admin';
 import { Menu } from './components/Menu/Menu';
 
 function App() {
   return (
     <div className='App'>
-      <Contact />
-       <h1>Restaurant Booking System</h1>
-      <BookingSystem />
-
       <Routes>
         <Route path='/' element={<LandingPage />} />
-        <Route path='/bookingsystem' element={<BookingSystem />} />
+        <Route path='/booking' element={<BookingSystem />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/menu' element={<Menu />} />
+        <Route path='/admin' element={<Admin />} />
       </Routes>
-
     </div> 
   )};
 export default App;
