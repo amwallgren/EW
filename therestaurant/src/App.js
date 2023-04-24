@@ -1,44 +1,27 @@
-/* 
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import { LandingPage } from './components/LandingPage';
+import { LandingPage } from './components/LandingPage/LandingPage';
 import { BookingSystem } from "./components/Booking/BookingSystem";
 import Contact from './components/contact/Contact';
-// import { Admin } from './components/Admin/Admin';
+import { Admin } from './components/Admin/Admin';
 import { Menu } from './components/Menu/Menu';
 import { CreateRestaurant } from "./components/CreateRestaurant";
 
 function App() {
   return (
     <div className='App'>
-      <Contact />
+{/*       <Contact />
       <h1>Restaurant Booking System</h1>
       <BookingSystem />
-      <CreateRestaurant />
+      <CreateRestaurant /> */}
 
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='/booking' element={<BookingSystem />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/menu' element={<Menu />} />
-       {/*  <Route path='/admin' element={<Admin />} /> 
+        <Route path='/admin' element={<Admin />} /> 
       </Routes>
     </div> 
   )};
-export default App; */
-
-
-
-
-/* import React from "react";
-
-export const Header = ({ onBookTableClick }) => (
-  <header>
-    {/* <h1>EW</h1>
-    <button>Contact us</button>
-    <button>Our Menu</button> 
-    <h1>Restaurang</h1>
-    <button onClick={onBookTableClick}>Boka bord</button>
-  </header>
-); */
-
+export default App;

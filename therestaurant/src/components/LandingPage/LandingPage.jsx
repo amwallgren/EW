@@ -1,7 +1,7 @@
 
 import './lp.css';
 import ew from '../../images/ew.png';
-import Header from './Header';
+import { Header } from './Header';
 
  
  export const LandingPage = () => {
