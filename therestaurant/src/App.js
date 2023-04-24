@@ -1,7 +1,7 @@
 
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import { LandingPage } from './components/LandingPage/LandingPage';
+import { LandingPage } from './components/LandingPage';
 import { BookingSystem } from "./components/Booking/BookingSystem";
 import Contact from './components/contact/Contact';
 // import { Admin } from './components/Admin/Admin';
