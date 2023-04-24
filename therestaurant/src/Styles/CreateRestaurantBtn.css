@@ -1,0 +1,41 @@
+.create-restaurant-btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+}
+
+.create-restaurant-btn-label {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.create-restaurant-btn-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.create-restaurant-btn-button {
+  width: 100%;
+  padding: 12px 20px;
+  font-weight: bold;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.create-restaurant-btn-button:hover {
+  background-color: #45a049;
+}
