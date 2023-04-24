@@ -1,16 +1,10 @@
-
 .App {
   text-align: center;
-}
-* {
-  background-color: rgb(99, 125, 110);
-  color: antiquewhite;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-  
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -42,8 +36,3 @@
     transform: rotate(360deg);
   }
 }
-/* HUMAN WRITTEN CSS GOES HERE */
-.ewHeader {
-  height: 500px;
-}
-
