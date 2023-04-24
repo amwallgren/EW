@@ -1,3 +1,5 @@
-# React project
+Libraries jag har andvänt för koden so far
 
-This project is a starter template for the assignment below. You should use this project to build the frontend of your restaurant.
+ "react-modal": "^3.16.1",
+ "react-router-dom": "^6.10.0",
+ "web3": "^1.9.0"
