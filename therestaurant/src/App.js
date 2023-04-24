@@ -5,19 +5,21 @@ import { LandingPage } from './components/LandingPage';
 import BookingSystem from "./components/Booking/BookingSystem";
 import Contact from './components/contact/Contact';
 import { Menu } from './components/Menu/Menu';
+import { Admin } from './components/_Admin/Admin';
 
 function App() {
   return (
     <div className='App'>
-      <Contact />
+      {/* <Contact />
        <h1>Restaurant Booking System</h1>
-      <BookingSystem />
+      <BookingSystem /> */}
 
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='/bookingsystem' element={<BookingSystem />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/menu' element={<Menu />} />
+        <Route path='/admin' element={<Admin />} />
       </Routes>
 
     </div> 
