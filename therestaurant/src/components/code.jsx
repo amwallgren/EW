@@ -1,4 +1,4 @@
-
+/* 
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import { LandingPage } from './components/LandingPage';
@@ -21,9 +21,24 @@ function App() {
         <Route path='/booking' element={<BookingSystem />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/menu' element={<Menu />} />
-       {/*  <Route path='/admin' element={<Admin />} /> */}
+       {/*  <Route path='/admin' element={<Admin />} /> 
       </Routes>
     </div> 
   )};
-export default App;
+export default App; */
+
+
+
+
+/* import React from "react";
+
+export const Header = ({ onBookTableClick }) => (
+  <header>
+    {/* <h1>EW</h1>
+    <button>Contact us</button>
+    <button>Our Menu</button> 
+    <h1>Restaurang</h1>
+    <button onClick={onBookTableClick}>Boka bord</button>
+  </header>
+); */
 
