@@ -1,8 +1,8 @@
 import "../../Styles/Form.css";
 import React, { useState } from "react";
-import BookingForm from "./BookingForm";
+import { BookingForm } from "./BookingForm";
 
-const BookingSearch = ({ onSearch, searchResults }) => {
+export const BookingSearch = ({ onSearch, searchResults }) => {
   const [isFormVisible, setIsFormVisible] = useState(false);
 
   const handleSearchSubmit = (formData) => {
@@ -36,5 +36,3 @@ const BookingSearch = ({ onSearch, searchResults }) => {
     </div>
   );
 };
-
-export default BookingSearch;

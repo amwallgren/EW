@@ -2,13 +2,13 @@ import React, { createContext, useState, useEffect, useContext } from "react";
 import Web3 from "web3";
 import { contractABI, contractAddress } from "../config";
 
-const useWeb3 = () => {
+export const useWeb3 = () => {
   return useContext(Web3Context);
 };
 
-const Web3Context = createContext(null);
+export const Web3Context = createContext(null);
 
-const Web3Provider = ({ children }) => {
+export const Web3Provider = ({ children }) => {
   const [web3, setWeb3] = useState();
   const [contract, setContract] = useState();
 
@@ -29,11 +29,13 @@ const Web3Provider = ({ children }) => {
       }
 
       if (web3Instance) {
+        console.log("web3Instance created", web3Instance);
         setWeb3(web3Instance);
         const contractInstance = new web3Instance.eth.Contract(
           contractABI,
           contractAddress
         );
+        console.log("contractInstance created", contractInstance);
         setContract(contractInstance);
       }
     };
@@ -42,21 +44,46 @@ const Web3Provider = ({ children }) => {
   }, []);
 
   return (
-    <Web3Context.Provider value={{ web3, contract }}>
+    <Web3Context.Provider value={web3 && contract ? { web3, contract } : null}>
       {children}
     </Web3Context.Provider>
   );
 };
 
-const createBooking = async (web3, contract, bookingData, callback) => {
-  const { numberOfGuests, name, date, time, restaurantId } = bookingData;
+export const callContract = async (
+  web3,
+  contract,
+  method,
+  args = [],
+  send = false
+) => {
+  const accounts = await web3.eth.getAccounts();
+  const contractMethod = contract.methods[method](...args);
+  return send
+    ? contractMethod.send({ from: accounts[0] })
+    : contractMethod.call();
+};
 
+export const createRestaurant = async (web3, contract, name, callback) => {
   try {
-    const accounts = await web3.eth.getAccounts();
-    await contract.methods
-      .createBooking(numberOfGuests, name, date, time, restaurantId)
-      .send({ from: accounts[0] });
+    await callContract(web3, contract, "createRestaurant", [name], true);
+    callback(null, "Restaurant created successfully!");
+  } catch (error) {
+    console.error("Error creating restaurant:", error);
+    callback("Error creating restaurant. Please try again.", null);
+  }
+};
 
+export const createBooking = async (web3, contract, bookingData, callback) => {
+  try {
+    const { numberOfGuests, name, date, time, restaurantId } = bookingData;
+    await callContract(
+      web3,
+      contract,
+      "createBooking",
+      [numberOfGuests, name, date, time, restaurantId],
+      true
+    );
     callback(null, "Booking created successfully!");
   } catch (error) {
     console.error("Error creating booking:", error);
@@ -64,10 +91,39 @@ const createBooking = async (web3, contract, bookingData, callback) => {
   }
 };
 
-export default {
-  Web3Context,
-  Web3Provider,
-  createBooking,
-  contractABI,
-  useWeb3,
+export const editBooking = async (web3, contract, bookingData, callback) => {
+  try {
+    const { id, numberOfGuests, name, date, time } = bookingData;
+    await callContract(
+      web3,
+      contract,
+      "editBooking",
+      [id, numberOfGuests, name, date, time],
+      true
+    );
+    callback(null, "Booking updated successfully!");
+  } catch (error) {
+    console.error("Error updating booking:", error);
+    callback("Error updating booking. Please try again.", null);
+  }
+};
+
+export const removeBooking = async (web3, contract, id, callback) => {
+  try {
+    await callContract(web3, contract, "removeBooking", [id], true);
+    callback(null, "Booking removed successfully!");
+  } catch (error) {
+    console.error("Error removing booking:", error);
+    callback("Error removing booking. Please try again.", null);
+  }
+};
+
+export const getBookings = async (web3, contract, id, callback) => {
+  try {
+    const bookingIds = await callContract(web3, contract, "getBookings", [id]);
+    callback(null, bookingIds);
+  } catch (error) {
+    console.error("Error getting bookings:", error);
+    callback("Error getting bookings. Please try again.", null);
+  }
 };

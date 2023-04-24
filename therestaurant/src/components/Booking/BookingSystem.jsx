@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import BookingForm from "./BookingForm";
-import BookingSearch from "./BookingSearch";
+import { BookingForm } from "./BookingForm";
+import { BookingSearch } from "./BookingSearch";
 
 Modal.setAppElement("#root");
 
-const BookingSystem = () => {
+export const BookingSystem = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [bookings, setBookings] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
@@ -54,5 +54,3 @@ const BookingSystem = () => {
     </div>
   );
 };
-
-export default BookingSystem;
