@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useWeb3 } from "../../Services/web3Service";
 import { editBooking } from "../../Services/web3Service";
+import moment from "moment";
 
-export const EditBooking = () => {
+export const EditBooking = ({ booking, onClose }) => {
   const [bookingId, setBookingId] = useState("");
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
-  const [time, setTime] = useState(0);
+  const [time, setTime] = useState("");
   const web3Context = useWeb3();
   const { web3, contract } = web3Context || {};
 
@@ -48,21 +49,65 @@ export const EditBooking = () => {
       } catch (error) {
         console.error("Error editing booking:", error);
       }
+    };
+  };
+
+  const handleSave = async () => {
+    if (web3 && contract) {
+      const formattedTime = moment(time, 'HH:mm').format('HHmm');
+      const bookingData = {
+        id: booking.id,
+        numberOfGuests: 3,
+        name,
+        date,
+        time: formattedTime,
+      };
+      try {
+        await editBooking(web3, contract, bookingData, (error) => {
+          if (error) {
+            console.error("Error editing booking:", error);
+          } else {
+            console.log(bookingData);
+            console.log("Booking edited successfully!");
+            onClose();
+          }
+        });
+      } catch (error) {
+        console.error("Error editing booking:", error);
+      }
     }
   };
 
   return (
     <div className="edit-booking-container">
-      <input
-        type="text"
-        className="edit-booking-input"
-        placeholder="Booking ID"
-        value={bookingId}
-        onChange={(event) => setBookingId(event.target.value)}
-      />
-      <button onClick={handleEditBooking} className="admin-btn">
-        Edit Booking
+      <label>
+        Name:
+        <input
+          type="text"
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+        />
+      </label>
+      <label>
+        Date:
+        <input
+          type="date"
+          value={date}
+          onChange={(event) => setDate(event.target.value)}
+        />
+      </label>
+      <label>
+        Time:
+        <input
+          type="time"
+          value={time}
+          onChange={(event) => setTime(event.target.value)}
+        />
+      </label>
+      <button onClick={handleSave} className="admin-btn">
+        Save
       </button>
+      <button onClick={onClose}>Cancel</button>
     </div>
   );
 };
