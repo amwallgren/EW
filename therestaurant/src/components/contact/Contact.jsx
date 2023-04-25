@@ -1,6 +1,4 @@
 import { useState } from "react";
-import Header from "../LandingPage/Header";
-import { Footer } from "../LandingPage/Footer";
 
 function Contact() {
 
@@ -22,7 +20,6 @@ function Contact() {
 
     return (
         <div className="contact-box">
-            <Header />
             <h2>Contact us</h2>
             <form className="contact-form" onSubmit={handleSubmit}>
                 <input
@@ -52,7 +49,6 @@ function Contact() {
             </form>
             <button>Back</button>
             <h3>{contactMessage}</h3>
-            <Footer />
         </div>
     );
 };

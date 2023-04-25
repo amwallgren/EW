@@ -1,6 +1,7 @@
 import React from "react";
 import './lp.css';
 import ew from '../../images/ew.png';
+import HamburgerMenu from "./HamburgerMenu";
 
 function Header ({ onBookTableClick }) {
 
@@ -15,10 +16,10 @@ function Header ({ onBookTableClick }) {
     <>
       <header>
        <img className="ewHeader" src={ew}></img>
-       
-        <button onClick={showContactComponent}>Contact us</button>
+       <HamburgerMenu />
+{/*     <button onClick={showContactComponent}>Contact us</button>
         <button onClick={showMenuComponent}>Our Menu</button> 
-        <button onClick={onBookTableClick}>Get me a table</button>
+        <button onClick={onBookTableClick}>Get me a table</button> */}
       </header>
     </>
   );

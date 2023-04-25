@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import { BookingForm } from "./BookingForm";
 import { BookingSearch } from "./BookingSearch";
-import { Footer } from "../LandingPage/Footer";
 
 Modal.setAppElement("#root");
 
@@ -52,7 +51,6 @@ export const BookingSystem = () => {
         onSearch={handleSearchSubmit}
         searchResults={searchResults}
       />
-      <Footer />
     </div>
   );
 };

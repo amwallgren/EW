@@ -16,6 +16,7 @@ import './Menu.css';
 
 export const Menu = () => {
     return (
+        <>
         <div className='menuWrapper'>
             <img className='centuryEgg' src={centuryEgg}></img>
             <img className='cuyRoastedGuineaPig' src={cuyRoastedGuineaPig}></img>
@@ -28,5 +29,6 @@ export const Menu = () => {
             <img className='surstromming' src={surstromming}></img> <br />
             {/* <img className='twinkie' src={twinkie}></img> */}
         </div>
+        </>
     )
 }
