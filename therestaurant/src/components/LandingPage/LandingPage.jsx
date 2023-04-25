@@ -1,23 +1,18 @@
-
-import './lp.css';
 import ew from '../../images/ew.png';
-import { Header } from './Header';
+import  Header  from './Header';
+import { Footer } from './Footer';
 
- 
  export const LandingPage = () => {
     return (
     <div className="wrapper"> 
         
-         <Header />
-            
+         <Header /> 
 
-        <main>
-            <img className="ewHeader" src={ew}></img>
-        </main>
+     <main>
+        
+     </main>
 
-        <footer>
-            <h2>Learn more about how we work with GDPR</h2>
-        </footer>
+        <Footer />
     </div>
     )
 }
