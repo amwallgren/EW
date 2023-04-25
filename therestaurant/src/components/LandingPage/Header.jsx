@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
+import { BookingSystem } from "../Booking/BookingSystem";
 
-export const Header = ({ onBookTableClick }) => (
-  <header>
-    <h1>EW</h1>
-    <button>Contact us</button>
-    <button>Our Menu</button> 
-    <h1>Restaurang</h1>
-    <button onClick={onBookTableClick}>Boka bord</button>
-  </header>
-)
+export const Header = () => {
+  const [restaurantId] = useState(null);
+
+  return (
+    <header>
+      <h1>EW</h1>
+      <BookingSystem restaurantId={restaurantId} />
+      <h2>Contact</h2>
+      <button>Contact us</button>
+      <h3>Menu</h3>
+      <button>Our Menu</button>
+    </header>
+  );
+};
