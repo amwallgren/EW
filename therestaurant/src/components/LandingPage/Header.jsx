@@ -1,17 +1,22 @@
-import React, { useState } from "react";
+import React, { useState } from "react";
+import './lp.css';
+import ew from '../../images/ew.png';
+import HamburgerMenu from "./HamburgerMenu";
 import { BookingSystem } from "../Booking/BookingSystem";
 
-export const Header = () => {
-  const [restaurantId] = useState(null);
 
-  return (
-    <header>
-      <h1>EW</h1>
-      <BookingSystem restaurantId={restaurantId} />
-      <h2>Contact</h2>
-      <button>Contact us</button>
-      <h3>Menu</h3>
-      <button>Our Menu</button>
-    </header>
+function Header ({ onBookTableClick }) {
+ const [restaurantId] = useState(null)
+
+  return ( 
+    <>
+      <header>
+       <img className="ewHeader" src={ew}></img>
+       <BookingSystem restaurantId={restaurantId} />
+       <HamburgerMenu />
+      </header>
+    </>
   );
+
 };
+export default Header;
