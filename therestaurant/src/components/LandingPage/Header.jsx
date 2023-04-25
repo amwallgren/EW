@@ -1,25 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import './lp.css';
 import ew from '../../images/ew.png';
 import HamburgerMenu from "./HamburgerMenu";
+import { BookingSystem } from "../Booking/BookingSystem";
+
 
 function Header ({ onBookTableClick }) {
-
-  const showContactComponent = () => {
-    // link to contact component page
-  }
-  const showMenuComponent = () => {
-    // link to menu component page 
-  }
+ const [restaurantId] = useState(null)
 
   return ( 
     <>
       <header>
        <img className="ewHeader" src={ew}></img>
+       <BookingSystem restaurantId={restaurantId} />
        <HamburgerMenu />
-{/*     <button onClick={showContactComponent}>Contact us</button>
-        <button onClick={showMenuComponent}>Our Menu</button> 
-        <button onClick={onBookTableClick}>Get me a table</button> */}
       </header>
     </>
   );

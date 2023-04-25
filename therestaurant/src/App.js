@@ -3,6 +3,7 @@ import "./App.css";
 import { BookingSystem } from "./components/Booking/BookingSystem";
 import Contact from "./components/contact/Contact";
 import { Menu } from "./components/Menu/Menu";
+import { useState } from "react";
 // import { CreateRestaurant } from "./components/CreateRestaurant";
 import { Admin } from "./components/_Admin/Admin";
 import Header from "./components/LandingPage/Header";
@@ -19,9 +20,11 @@ function App() {
         <Route path="/menu" element={<Menu />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
+
       </main>
         <Footer />
       </div> 
     )
   };
 export default App;
+

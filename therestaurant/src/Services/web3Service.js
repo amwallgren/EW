@@ -50,6 +50,15 @@ export const Web3Provider = ({ children }) => {
   );
 };
 
+// export const timeToUnixTimestamp = (dateString, timeString) => {
+//   const [hour, minute] = timeString
+//     .split(":")
+//     .map((value) => parseInt(value, 10));
+//   const date = new Date(dateString);
+//   date.setHours(hour, minute, 0, 0);
+//   return Math.floor(date.getTime() / 1000);
+// };
+
 export const callContract = async (
   web3,
   contract,
@@ -74,21 +83,21 @@ export const createRestaurant = async (web3, contract, name, callback) => {
   }
 };
 
-export const createBooking = async (web3, contract, bookingData, callback) => {
-  try {
-    const { numberOfGuests, name, date, time, restaurantId } = bookingData;
-    await callContract(
-      web3,
-      contract,
-      "createBooking",
-      [numberOfGuests, name, date, time, restaurantId],
-      true
-    );
-    callback(null, "Booking created successfully!");
-  } catch (error) {
-    console.error("Error creating booking:", error);
-    callback("Error creating booking. Please try again.", null);
-  }
+export const createBooking = async (
+  web3,
+  contract,
+  numberOfGuests,
+  name,
+  date,
+  time,
+  restaurantId
+) => {
+  const accounts = await web3.eth.getAccounts();
+  const from = accounts[0];
+
+  return contract.methods
+    .createBooking(numberOfGuests, name, date, time, restaurantId)
+    .send({ from });
 };
 
 export const editBooking = async (web3, contract, bookingData, callback) => {

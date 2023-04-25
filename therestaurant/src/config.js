@@ -1,12 +1,12 @@
 export const providerURL = "http://localhost:3000";
-export const contractAddress = "0x3Cda756BD3c174De4F0CaE263290D6Ac6ee8e815";
+export const contractAddress = "0xb29670f036C621aaE8a31B281FD9Bf9a225BD2a7";
 export const contractABI = [
-  /*constructor*/{
+  /*constructor*/ {
     inputs: [],
     stateMutability: "nonpayable",
     type: "constructor",
   },
-  /*BookingCreated - event*/{
+  /*BookingCreated - event*/ {
     anonymous: false,
     inputs: [
       {
@@ -25,7 +25,7 @@ export const contractABI = [
     name: "BookingCreated",
     type: "event",
   },
-  /*DeletedBooking - event*/{
+  /*DeletedBooking - event*/ {
     anonymous: false,
     inputs: [
       {
@@ -38,7 +38,7 @@ export const contractABI = [
     name: "DeletedBooking",
     type: "event",
   },
-  /*GotBookings - event*/{
+  /*GotBookings - event*/ {
     anonymous: false,
     inputs: [
       {
@@ -51,7 +51,7 @@ export const contractABI = [
     name: "GotBookings",
     type: "event",
   },
-  /*RestaurantCreated - event*/{
+  /*RestaurantCreated - event*/ {
     anonymous: false,
     inputs: [
       {
@@ -70,7 +70,7 @@ export const contractABI = [
     name: "RestaurantCreated",
     type: "event",
   },
-  /*UpdatedBooking - event*/{
+  /*UpdatedBooking - event*/ {
     anonymous: false,
     inputs: [
       {
@@ -115,7 +115,7 @@ export const contractABI = [
     name: "UpdatedBooking",
     type: "event",
   },
-  /*bookingCount - function*/{
+  /*bookingCount - function*/ {
     inputs: [],
     name: "bookingCount",
     outputs: [
@@ -129,7 +129,7 @@ export const contractABI = [
     type: "function",
     constant: true,
   },
-  /*bookings - function*/{
+  /*bookings - function*/ {
     inputs: [
       {
         internalType: "uint256",
@@ -174,7 +174,7 @@ export const contractABI = [
     type: "function",
     constant: true,
   },
-  /*restaurantCount - function*/{
+  /*restaurantCount - function*/ {
     inputs: [],
     name: "restaurantCount",
     outputs: [
@@ -188,7 +188,7 @@ export const contractABI = [
     type: "function",
     constant: true,
   },
-  /*restaurants - function*/{
+  /*restaurants - function*/ {
     inputs: [
       {
         internalType: "uint256",
@@ -213,7 +213,7 @@ export const contractABI = [
     type: "function",
     constant: true,
   },
-  /*createRestaurant - function*/{
+  /*createRestaurant - function*/ {
     inputs: [
       {
         internalType: "string",
@@ -226,7 +226,7 @@ export const contractABI = [
     stateMutability: "nonpayable",
     type: "function",
   },
-  /*createBooking - function*/{
+  /*createBooking - function*/ {
     inputs: [
       {
         internalType: "uint256",
@@ -259,7 +259,7 @@ export const contractABI = [
     stateMutability: "nonpayable",
     type: "function",
   },
-  /*getBookings - function*/{
+  /*getBookings - function*/ {
     inputs: [
       {
         internalType: "uint256",
@@ -279,7 +279,7 @@ export const contractABI = [
     type: "function",
     constant: true,
   },
-  /*editBooking - function*/{
+  /*editBooking - function*/ {
     inputs: [
       {
         internalType: "uint256",
@@ -312,7 +312,7 @@ export const contractABI = [
     stateMutability: "nonpayable",
     type: "function",
   },
-  /*removeBooking - function*/{
+  /*removeBooking - function*/ {
     inputs: [
       {
         internalType: "uint256",

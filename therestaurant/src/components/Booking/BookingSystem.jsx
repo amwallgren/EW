@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import { BookingForm } from "./BookingForm";
-import { BookingSearch } from "./BookingSearch";
 
 Modal.setAppElement("#root");
 
-export const BookingSystem = () => {
+export const BookingSystem = (restaurantId) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [bookings, setBookings] = useState([]);
-  const [searchResults, setSearchResults] = useState([]);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -23,17 +21,6 @@ export const BookingSystem = () => {
     closeModal();
   };
 
-  const handleSearchSubmit = (formData) => {
-    const filteredBookings = bookings.filter((booking) => {
-      return (
-        booking.name.toLowerCase().includes(formData.name.toLowerCase()) &&
-        booking.bookingDate === formData.bookingDate &&
-        booking.numberOfGuests >= formData.numberOfGuests
-      );
-    });
-    setSearchResults(filteredBookings);
-  };
-
   const handleBookTableClick = () => {
     setIsModalOpen(true);
   };
@@ -46,11 +33,6 @@ export const BookingSystem = () => {
         {isModalOpen && <BookingForm onSubmit={handleBookingSubmit} />}
         <button onClick={closeModal}>Close</button>
       </Modal>
-
-      <BookingSearch
-        onSearch={handleSearchSubmit}
-        searchResults={searchResults}
-      />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import "../../Styles/Form.css";
 import React, { useState } from "react";
-import { BookingForm } from "./BookingForm";
+import { BookingForm } from "../Booking/BookingForm";
 
 export const BookingSearch = ({ onSearch, searchResults }) => {
   const [isFormVisible, setIsFormVisible] = useState(false);
