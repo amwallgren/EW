@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 // import "../../Styles/Form.css";
 import { Web3Context } from "../../Services/web3Service";
 
-export const BookingForm = ({ restaurantId }) => {
+export const BookingForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [date, setDate] = useState("");
@@ -15,7 +15,7 @@ export const BookingForm = ({ restaurantId }) => {
     e.preventDefault();
 
     const dateString = new Date(date).toISOString().split("T")[0];
-    const timeValue = time === "19:00" ? "1900" : "2100";
+    const timeValue = time === "18:00" ? "1800" : "2100";
     const numberOfGuests = parseInt(guests, 10);
 
     try {
@@ -69,18 +69,18 @@ export const BookingForm = ({ restaurantId }) => {
             <input
               type="radio"
               name="time"
-              value="19"
-              checked={time === "19"}
+              value="18:00"
+              checked={time === "18:00"}
               onChange={(e) => setTime(e.target.value)}
             />
-            19:00
+            18:00
           </label>
           <label>
             <input
               type="radio"
               name="time"
-              value="21"
-              checked={time === "21"}
+              value="21:00"
+              checked={time === "21:00"}
               onChange={(e) => setTime(e.target.value)}
             />
             21:00
@@ -92,6 +92,7 @@ export const BookingForm = ({ restaurantId }) => {
           value={guests}
           onChange={(e) => setGuests(e.target.value)}
           min="1"
+          max="6"
           required
         />
         <button type="submit">Submit</button>

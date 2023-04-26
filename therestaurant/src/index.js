@@ -5,8 +5,8 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { Web3Provider } from "./Services/web3Service";
-import { RouterProvider } from "react-router-dom";
-import { router } from "./Router";
+// import { RouterProvider } from "react-router-dom";
+// import { router } from "./Router";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

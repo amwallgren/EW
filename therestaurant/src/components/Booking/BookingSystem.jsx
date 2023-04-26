@@ -4,7 +4,7 @@ import { BookingForm } from "./BookingForm";
 
 Modal.setAppElement("#root");
 
-export const BookingSystem = (restaurantId) => {
+export const BookingSystem = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [bookings, setBookings] = useState([]);
 
@@ -14,6 +14,7 @@ export const BookingSystem = (restaurantId) => {
 
   const closeModal = () => {
     setIsModalOpen(false);
+    window.location.reload();
   };
 
   const handleBookingSubmit = (booking) => {
