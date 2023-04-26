@@ -8,6 +8,7 @@ import { useState } from "react";
 import { Admin } from "./components/_Admin/Admin";
 import Header from "./components/LandingPage/Header";
 import { Footer } from "./components/LandingPage/Footer";
+import Gdpr from "./components/LandingPage/Gdpr";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/gdpr" element={<Gdpr />} />
       </Routes>
 
       </main>

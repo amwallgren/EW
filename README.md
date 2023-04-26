@@ -16,7 +16,9 @@ Följande sidor måste finnas med: Startsida, bokningssida och en kontaktsida. O
 Beskrivning av bokningen
 Utgå ifrån att restaurangen har 15 bord för sex personer vid varje bord. Restaurangen har två sittningar varje kväll, en klockan 18:00 och en klockan 21:00. Detta innebär att samtliga bord bör gå att boka två gånger per kväll.
 
-Skapa utifrån detta en applikation där det går att söka fram information för ett givet datum eller vecka. Användaren skall kunna välja en tid för den valda dagen. Samla in personuppgifter, upplys om gdpr och se till att bokningen genomförs.
+Skapa utifrån detta en applikation där det går att söka fram information för ett givet datum eller vecka. Användaren skall kunna välja en tid för den valda dagen.
+
+Samla in personuppgifter, upplys om gdpr och se till att bokningen genomförs.
 
 I ett adminläge bör bokningar kunna administreras (modifieras, tas bort, läggas till) för personalen på restaurangen.
 

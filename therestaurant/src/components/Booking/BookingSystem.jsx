@@ -27,9 +27,8 @@ export const BookingSystem = (restaurantId) => {
 
   return (
     <div>
-      <button onClick={handleBookTableClick}>Book a table</button>
-      <Modal isOpen={isModalOpen} onRequestClose={closeModal}>
-        <h2>Book a Table</h2>
+      <button className="bookingButton" onClick={handleBookTableClick}>Book a table</button>
+      <Modal className='modalForm' isOpen={isModalOpen} onRequestClose={closeModal}>
         {isModalOpen && <BookingForm onSubmit={handleBookingSubmit} />}
         <button onClick={closeModal}>Close</button>
       </Modal>
