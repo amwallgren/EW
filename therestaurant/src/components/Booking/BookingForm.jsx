@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import "../../Styles/Form.css";
+// import "../../Styles/Form.css";
 import { Web3Context } from "../../Services/web3Service";
 
 export const BookingForm = ({ restaurantId }) => {
@@ -41,7 +41,7 @@ export const BookingForm = ({ restaurantId }) => {
   };
 
   return (
-    <div className="booking-form">
+    <div className="bookingForm">
       <h2>Book a table</h2>
       <form onSubmit={handleSubmit}>
         <input
@@ -86,6 +86,7 @@ export const BookingForm = ({ restaurantId }) => {
             21:00
           </label>
         </div>
+        <p>Number of guests:</p>
         <input
           type="number"
           value={guests}

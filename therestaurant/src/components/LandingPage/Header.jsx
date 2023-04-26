@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import './lp.css';
+import React, { useState } from "react";
+import './Layout.css';
 import ew from '../../images/ew.png';
 import HamburgerMenu from "./HamburgerMenu";
-import { BookingSystem } from "../Booking/BookingSystem";
 
 
 function Header ({ onBookTableClick }) {
@@ -11,9 +10,8 @@ function Header ({ onBookTableClick }) {
   return ( 
     <>
       <header>
-       <img className="ewHeader" src={ew}></img>
-       <BookingSystem restaurantId={restaurantId} />
-       <HamburgerMenu />
+       <img className="ewHeader" src={ew}></img> 
+        <HamburgerMenu />
       </header>
     </>
   );

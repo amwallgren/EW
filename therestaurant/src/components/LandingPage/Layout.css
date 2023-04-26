@@ -1,40 +1,27 @@
 
-header {
-    top: 0;
-    background-image: url('../../images/ew.png');
-}
-
-body {
-    margin: 0;
-  }
-
-footer {
-    bottom: 0;
-    left: 0;
+.ewHeader {
     width: 100%;
-    padding: 1%;
-    height: 20px;
-}
-
-h1 {
-    color: whitesmoke;
 }
 
 .navBar {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    position: fixed;
     top: 0;
     right: 0;
     left: 0;
     padding: 10px;
+    z-index: 2;
 }
 
 .navBar a {
   color: #fff;
   text-decoration: none;
   font-size: 20px;
+  margin-top: 10px;
+}
+.navBar a:hover {
+    color: red;
 }
 
 .icon {

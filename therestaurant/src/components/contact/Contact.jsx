@@ -47,7 +47,6 @@ function Contact() {
                 <br></br>
                 <button>Send</button>
             </form>
-            <button>Back</button>
             <h3>{contactMessage}</h3>
         </div>
     );

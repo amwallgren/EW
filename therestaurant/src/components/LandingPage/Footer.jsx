@@ -1,11 +1,11 @@
 import React from 'react';
-import './lp.css';
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
     <div>
       <footer>
-            <h2>Learn more about how we work with GDPR</h2>
+            <Link to={'/gdpr'}>Learn more about how we work with GDPR</Link>
       </footer>
     </div>
   )
