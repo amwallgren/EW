@@ -14,6 +14,7 @@ export const Admin = () => {
       <h1>Admin</h1>
       <CreateRestaurant onRestaurantCreated={setRestaurantId} />
       <GetBooking />
+      
       <BookingSystem />
       {/* <EditBooking /> */}
       {/* <RemoveBooking /> */}

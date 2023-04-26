@@ -13,10 +13,13 @@ export const GetBooking = () => {
 
   //modals
   const [BookingModal, setBookingsModal] = useState(false);
+  const [bookingFormModal, setBookingFormModal] = useState(false);
   // const showBookingModal = () => {
   //   setBookingsModal(true);
   // };
 
+  const [time, setTime] = useState(0);
+  const [date, setDate] = useState("");
   //selected booking for edit
   const [selectedBooking, setSelectedBooking] = useState(null);
 
@@ -30,11 +33,22 @@ export const GetBooking = () => {
   const closeBookingModal = () => {
     setBookingsModal(false);
   }
+  
+  //open booking form modal
+  const handleBookingFormModal = () => {
+    setBookingFormModal(true);
+  }
+
+  const closeBookingFormModal = () => {
+    setBookingFormModal(false);
+  }
 
   const handleGetBooking = async () => {
     setBookingsModal(true);
 
-    
+    const dateString = new Date(date).toISOString().split("T")[0];
+    const timeValue = time === "18:00" ? "1800" : "2100";
+
     if (web3 && contract) {
       var tempBookingsArray = [];
       try {
@@ -43,14 +57,15 @@ export const GetBooking = () => {
         // console.log(bookingIds);
         // const bookingArray = [];
         for (let i = 0; i <= bookingIds; i++) {
-          console.log(i);
+          // console.log(i);
           // const bookingId = bookingIds[i];
           // let bookingId = bookingIds[i];
           let bookings = await contract.methods.bookings(i).call();
           // tempBookingsArray.push(bookings);
           // console.log(bookingArray);
           console.log(bookings);
-          if(bookings.id > 0) {
+          if(bookings.time === timeValue && bookings.date === dateString) {
+            // console.log(bookings);
             tempBookingsArray.push(bookings);
           }
           
@@ -87,16 +102,64 @@ export const GetBooking = () => {
     );
   });
 
+  if(bookingsArray.length < 15) {
+    // console.log("theres is " + (15 - bookingsArray.length) + " available bookings");
+    var messageBookings = "Theres are " + (15 - bookingsArray.length) + " available tables left. ";
+  } else {
+    var messageBookings = "There are no more tables available at this time. Please choose another time or date."
+  }
+
 
   return (
+
     <div>
-      <button onClick={handleGetBooking} className="admin-btn">
-      Get Bookings
-      </button>
+
+      <div>
+        <button onClick={handleBookingFormModal}>Get bookings</button>
+      </div>
+
+      {bookingFormModal && (
+        <div>
+          <input
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+          required
+          />
+          <label>
+            <input
+              type="radio"
+              name="time"
+              value="18:00"
+              checked={time === "18:00"}
+              onChange={(e) => setTime(e.target.value)}
+            />
+            18:00
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="time"
+              value="21:00"
+              checked={time === "21:00"}
+              onChange={(e) => setTime(e.target.value)}
+            />
+            21:00
+          </label>
+          
+          <button onClick={handleGetBooking} className="admin-btn">
+            Search bookings
+          </button>
+          <button onClick={closeBookingFormModal}>Close</button>
+
+        </div>
+        
+      )}
 
       {BookingModal && (
         <div className="booking-list-modal">
           {bookingsListHtml}
+          {messageBookings}
           <button onClick={closeBookingModal}>Close</button>
         </div>
 
