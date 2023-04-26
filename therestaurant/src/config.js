@@ -1,5 +1,5 @@
 export const providerURL = "http://localhost:3000";
-export const contractAddress = "0xc74c6ec0c3bDDF284e96A7083c4426B857dFF2c7";
+export const contractAddress = "0x6026459c0Cd8B3208AdCfe999A0344A2a6310220";
 export const contractABI = [
   /*constructor*/ {
     inputs: [],

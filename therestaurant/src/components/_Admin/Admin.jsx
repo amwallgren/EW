@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { CreateRestaurant } from "./CreateRestaurant";
 import { GetBooking } from "./GetBooking";
-import { EditBooking } from "./EditBooking";
-import { RemoveBooking } from "./RemoveBooking";
-import { BookingSearch } from "./BookingSearch";
+import { BookingSystem } from "../Booking/BookingSystem";
+// import { EditBooking } from "./EditBooking";
+// import { RemoveBooking } from "./RemoveBooking";
+// import { BookingSearch } from "./BookingSearch";
 
 export const Admin = () => {
   const [setRestaurantId] = useState(null);
@@ -13,6 +14,7 @@ export const Admin = () => {
       <h1>Admin</h1>
       <CreateRestaurant onRestaurantCreated={setRestaurantId} />
       <GetBooking />
+      <BookingSystem />
       {/* <EditBooking /> */}
       {/* <RemoveBooking /> */}
       {/* <BookingSearch /> */}

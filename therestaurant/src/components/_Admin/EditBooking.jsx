@@ -8,6 +8,7 @@ export const EditBooking = ({ booking, onClose }) => {
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
+  const [numberOfGuests, setNumberOfGuests] = useState("");
   const web3Context = useWeb3();
   const { web3, contract } = web3Context || {};
 
@@ -18,6 +19,7 @@ export const EditBooking = ({ booking, onClose }) => {
         setName(booking.name);
         setDate(booking.date);
         setTime(booking.time);
+        setNumberOfGuests(booking.numberOfGuests);
       } catch (error) {
         console.error("Error fetching booking:", error);
       }
@@ -28,36 +30,36 @@ export const EditBooking = ({ booking, onClose }) => {
     fetchBooking();
   }, [bookingId]);
 
-  const handleEditBooking = async () => {
-    if (web3 && contract && bookingId) {
-      const bookingData = {
-        id: bookingId,
-        numberOfGuests: 3,
-        name,
-        date,
-        time,
-      };
-      try {
-        await editBooking(web3, contract, bookingData, (error) => {
-          if (error) {
-            console.error("Error editing booking:", error);
-          } else {
-            console.log(bookingData);
-            console.log("Booking edited successfully!");
-          }
-        });
-      } catch (error) {
-        console.error("Error editing booking:", error);
-      }
-    };
-  };
+  // const handleEditBooking = async () => {
+  //   if (web3 && contract && bookingId) {
+  //     const bookingData = {
+  //       id: bookingId,
+  //       numberOfGuests: 3,
+  //       name,
+  //       date,
+  //       time,
+  //     };
+  //     try {
+  //       await editBooking(web3, contract, bookingData, (error) => {
+  //         if (error) {
+  //           console.error("Error editing booking:", error);
+  //         } else {
+  //           console.log(bookingData);
+  //           console.log("Booking edited successfully!");
+  //         }
+  //       });
+  //     } catch (error) {
+  //       console.error("Error editing booking:", error);
+  //     }
+  //   };
+  // };
 
   const handleSave = async () => {
     if (web3 && contract) {
       const formattedTime = moment(time, 'HH:mm').format('HHmm');
       const bookingData = {
         id: booking.id,
-        numberOfGuests: 3,
+        numberOfGuests: numberOfGuests,
         name,
         date,
         time: formattedTime,
@@ -70,12 +72,14 @@ export const EditBooking = ({ booking, onClose }) => {
             console.log(bookingData);
             console.log("Booking edited successfully!");
             onClose();
+            window.location.reload();
           }
         });
       } catch (error) {
         console.error("Error editing booking:", error);
       }
     }
+    // location.reload();
   };
 
   return (
@@ -102,6 +106,16 @@ export const EditBooking = ({ booking, onClose }) => {
           type="time"
           value={time}
           onChange={(event) => setTime(event.target.value)}
+        />
+      </label>
+      <label>
+        Guests:
+        <input
+          type="number"
+          value={numberOfGuests}
+          min={"1"}
+          max={"6"}
+          onChange={(event) => setNumberOfGuests(event.target.value)}
         />
       </label>
       <button onClick={handleSave} className="admin-btn">

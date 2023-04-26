@@ -34,6 +34,7 @@ export const GetBooking = () => {
   const handleGetBooking = async () => {
     setBookingsModal(true);
 
+    
     if (web3 && contract) {
       var tempBookingsArray = [];
       try {
@@ -74,12 +75,14 @@ export const GetBooking = () => {
         <li className="booking-list-name">{booking.name}</li>
         <li className="booking-list-date">{booking.date}</li>
         <li className="booking-list-time">{booking.time}</li>
+        <li className="booking-list-numOfGuests">{booking.numberOfGuests}</li>
         {/* <EditBooking />
         <RemoveBooking /> */}
         <li>
           <button onClick={() => handleEditBooking(booking)}>Edit</button>
         </li>
-
+        
+        <RemoveBooking bookingID={booking.id}/>
       </ul>
     );
   });
