@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Spinner from "../Spinner";
 
 function Contact() {
 
@@ -6,17 +7,22 @@ function Contact() {
     const [senderEmail, setSenderEmail] = useState("");
     const [textarea, setTextarea] = useState("");
     const [contactMessage, setContactMessage] = useState("");
+    const [spinner, setSpinner] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setSpinner(true);
+        setTimeout(() => { 
         let message = "Thank you " + senderName + " for contacting us! We will answer you as soon as possible at the adress " + senderEmail + ".";
         setContactMessage(message);
         setTextarea("");
         setSenderName("");
         setSenderEmail("");
+        setSpinner(false);
         console.log(senderName);
         console.log(senderEmail);
-    }
+    }, 1500);
+ }
 
     return (
         <div className="contact-box">
@@ -46,6 +52,7 @@ function Contact() {
                 ></textarea>
                 <br></br>
                 <button>Send</button>
+                {spinner && <Spinner />}
             </form>
             <h3>{contactMessage}</h3>
         </div>

@@ -7,7 +7,6 @@ import mellifiedMan from '../../images/mellifiedMan.jpg';
 import pickledSheepsEye from '../../images/pickledSheepsEye.jpg';
 import snails from '../../images/snails.jpg';
 import surstromming from '../../images/surstromming.jpg';
-// import twinkie from '../../images/twinkie.jpg';
 import './Menu.css';
 
 //to-do: add divs around everything for styling
@@ -27,7 +26,6 @@ export const Menu = () => {
             <img className='pickledSheepsEye' src={pickledSheepsEye}></img>
             <img className='snails' src={snails}></img> <br />
             <img className='surstromming' src={surstromming}></img> <br />
-            {/* <img className='twinkie' src={twinkie}></img> */}
         </div>
         </>
     )
