@@ -15,6 +15,7 @@ export const BookingForm = () => {
   const [step, setStep] = useState(1);
   const [showSpinner, setShowspinner] = useState(false);
   const [availableTables, setAvailableTables] = useState(0);
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   const { web3, contract } = useContext(Web3Context);
 
@@ -72,9 +73,15 @@ export const BookingForm = () => {
     }
   };
 
-  const handleNext = () => {
-    if (step < 4) {
-      setStep(step + 1);
+  const handleNext = (e) => {
+    e.preventDefault();
+    const form = e.target.closest("form");
+    if (form.checkValidity()) {
+      if (step < 4) {
+        setStep(step + 1);
+      }
+    } else {
+      form.reportValidity();
     }
   };
 
@@ -105,6 +112,8 @@ export const BookingForm = () => {
             setLastName={setLastName}
             email={email}
             setEmail={setEmail}
+            phoneNumber={phoneNumber}
+            setPhoneNumber={setPhoneNumber}
           />
           <div className="stepButtons">
             {step > 1 && (
@@ -113,7 +122,11 @@ export const BookingForm = () => {
               </button>
             )}
             {step < 4 && (
-              <button className="nextButton" type="button" onClick={handleNext}>
+              <button
+                className="nextButton"
+                type="button"
+                onClick={(e) => handleNext(e)}
+              >
                 Next
               </button>
             )}

@@ -21,6 +21,8 @@ export const BookingSteps = ({
   setLastName,
   email,
   setEmail,
+  phoneNumber = { phoneNumber },
+  setPhoneNumber = { setPhoneNumber },
 }) => {
   switch (step) {
     case 1:
@@ -45,6 +47,8 @@ export const BookingSteps = ({
           setLastName={setLastName}
           email={email}
           setEmail={setEmail}
+          phoneNumber={phoneNumber}
+          setPhoneNumber={setPhoneNumber}
         />
       );
     case 5:

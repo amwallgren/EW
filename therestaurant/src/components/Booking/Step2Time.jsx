@@ -15,23 +15,25 @@ export const Step2Time = ({
     <div>
       <label>
         <input
-          type="radio"
+          type="Radio"
           name="time"
           value="18:00"
           checked={time === "18:00"}
           onChange={handleTimeChange}
+          required
         />
-        18:00
+        Lunch
       </label>
       <label>
         <input
-          type="radio"
+          type="Radio"
           name="time"
           value="21:00"
           checked={time === "21:00"}
           onChange={handleTimeChange}
+          required
         />
-        21:00
+        Dinner
       </label>
       {time && (
         <p>
