@@ -50,15 +50,6 @@ export const Web3Provider = ({ children }) => {
   );
 };
 
-// export const timeToUnixTimestamp = (dateString, timeString) => {
-//   const [hour, minute] = timeString
-//     .split(":")
-//     .map((value) => parseInt(value, 10));
-//   const date = new Date(dateString);
-//   date.setHours(hour, minute, 0, 0);
-//   return Math.floor(date.getTime() / 1000);
-// };
-
 export const callContract = async (
   web3,
   contract,

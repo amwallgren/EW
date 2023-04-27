@@ -17,8 +17,41 @@ export const BookingForm = () => {
   const [guests, setGuests] = useState(1);
   const [step, setStep] = useState(1);
   const [showSpinner, setShowspinner] = useState(false);
+  // const [bookingListModal, setBookingListModal] = useState(false);
+  // const [bookingsArray, setBookingsArray] = useState([]);
+  const [availableTables, setAvailableTables] = useState(0);
 
   const { web3, contract } = useContext(Web3Context);
+
+  const handleGetBooking = async () => {
+    // setBookingListModal(true);
+
+    const dateString = new Date(date).toISOString().split("T")[0];
+    const timeValue = time === "18:00" ? "1800" : "2100";
+
+    const totalTables = 15; // Set the total number of tables in the restaurant
+
+    if (web3 && contract) {
+      var tempBookingsArray = [];
+      try {
+        let bookingIds = await contract.methods.bookingCount().call();
+        for (let i = 0; i <= bookingIds; i++) {
+          let bookings = await contract.methods.bookings(i).call();
+          if (bookings.time === timeValue && bookings.date === dateString) {
+            tempBookingsArray.push(bookings);
+          }
+        }
+      } catch (error) {
+        console.error("Error getting bookings:", error);
+      }
+
+      // setBookingsArray(tempBookingsArray);
+
+      // Calculate the number of available tables
+      const availableTables = totalTables - tempBookingsArray.length;
+      setAvailableTables(availableTables);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,7 +87,14 @@ export const BookingForm = () => {
       case 1:
         return <Step1Date date={date} setDate={setDate} />;
       case 2:
-        return <Step2Time time={time} setTime={setTime} />;
+        return (
+          <Step2Time
+            time={time}
+            setTime={setTime}
+            handleGetBooking={handleGetBooking}
+            availableTables={availableTables}
+          />
+        );
       case 3:
         return <Step3Guests guests={guests} setGuests={setGuests} />;
       case 4:
