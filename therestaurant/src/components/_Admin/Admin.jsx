@@ -15,7 +15,7 @@ export const Admin = () => {
       <CreateRestaurant onRestaurantCreated={setRestaurantId} />
       <GetBooking />
       
-      <BookingSystem />
+      {/* <BookingSystem /> */}
       {/* <EditBooking /> */}
       {/* <RemoveBooking /> */}
       {/* <BookingSearch /> */}
