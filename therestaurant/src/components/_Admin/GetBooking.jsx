@@ -166,7 +166,7 @@ export const GetBooking = () => {
 
       {bookingListModal && (
         <div className="booking-list-modal">
-          {/* {bookingsListHtml} */}
+          {bookingsListHtml}
           {availableMessage}
           <button onClick={closeBookingListModal}>Close</button>
 

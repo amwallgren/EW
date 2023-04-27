@@ -7,6 +7,8 @@ export const Step4NameAndEmail = ({
   setLastName,
   email,
   setEmail,
+  phoneNumber,
+  setPhoneNumber,
 }) => {
   return (
     <div>
@@ -29,6 +31,13 @@ export const Step4NameAndEmail = ({
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Email"
+        required
+      />
+      <input
+        type="text"
+        value={phoneNumber}
+        onChange={(e) => setPhoneNumber(e.target.value)}
+        placeholder="Phone Number"
         required
       />
     </div>

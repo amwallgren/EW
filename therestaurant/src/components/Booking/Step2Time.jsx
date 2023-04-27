@@ -7,35 +7,42 @@ export const Step2Time = ({
   availableTables,
 }) => {
   const handleTimeChange = async (e) => {
-    setTime(e.target.value);
-    await handleGetBooking();
+    const newTime = e.target.value;
+    setTime(newTime);
+    await handleGetBooking(newTime);
   };
 
   return (
     <div>
-      <label>
+      <label style={{ display: "block" }}>
         <input
-          type="radio"
+          type="Radio"
           name="time"
           value="18:00"
           checked={time === "18:00"}
           onChange={handleTimeChange}
+          required
         />
-        18:00
+        Lunch
       </label>
-      <label>
+      <label style={{ display: "block" }}>
         <input
-          type="radio"
+          type="Radio"
           name="time"
           value="21:00"
           checked={time === "21:00"}
           onChange={handleTimeChange}
+          required
         />
-        21:00
+        Dinner
       </label>
       {time && (
         <p>
-          {availableTables} table{availableTables === 1 ? "" : "s"} available
+          {availableTables > 0
+            ? `${availableTables} table${
+                availableTables === 1 ? "" : "s"
+              } available`
+            : "There are no tables available for this date"}
         </p>
       )}
     </div>
