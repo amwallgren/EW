@@ -17,19 +17,15 @@ export const BookingForm = () => {
   const [guests, setGuests] = useState(1);
   const [step, setStep] = useState(1);
   const [showSpinner, setShowspinner] = useState(false);
-  // const [bookingListModal, setBookingListModal] = useState(false);
-  // const [bookingsArray, setBookingsArray] = useState([]);
   const [availableTables, setAvailableTables] = useState(0);
 
   const { web3, contract } = useContext(Web3Context);
 
   const handleGetBooking = async () => {
-    // setBookingListModal(true);
-
     const dateString = new Date(date).toISOString().split("T")[0];
     const timeValue = time === "18:00" ? "1800" : "2100";
 
-    const totalTables = 15; // Set the total number of tables in the restaurant
+    const totalTables = 15;
 
     if (web3 && contract) {
       var tempBookingsArray = [];
@@ -45,9 +41,6 @@ export const BookingForm = () => {
         console.error("Error getting bookings:", error);
       }
 
-      // setBookingsArray(tempBookingsArray);
-
-      // Calculate the number of available tables
       const availableTables = totalTables - tempBookingsArray.length;
       setAvailableTables(availableTables);
     }
