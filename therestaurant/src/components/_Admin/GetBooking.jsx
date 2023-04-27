@@ -1,9 +1,10 @@
 import React from "react";
 import { useWeb3 } from "../../Services/web3Service";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../_Admin/getBooking.css";
 import { EditBooking } from "./EditBooking";
 import { RemoveBooking } from "./RemoveBooking";
+import { BookingSystem } from "../Booking/BookingSystem";
 
 export const GetBooking = () => {
   const web3Context = useWeb3();
@@ -12,7 +13,8 @@ export const GetBooking = () => {
   const [bookingsArray, setBookingsArray] = useState([]);
 
   //modals
-  const [BookingModal, setBookingsModal] = useState(false);
+  const [bookingListModal, setBookingListModal] = useState(false);
+  const [bookingBtnModal, setBookingBtnModal] = useState(false);
   const [bookingFormModal, setBookingFormModal] = useState(false);
   // const showBookingModal = () => {
   //   setBookingsModal(true);
@@ -23,6 +25,8 @@ export const GetBooking = () => {
   //selected booking for edit
   const [selectedBooking, setSelectedBooking] = useState(null);
 
+  const [availableMessage, setAvailableMessage] = useState("");
+
   const handleEditBooking = (booking) => {
     console.log(booking);
     setSelectedBooking(booking);
@@ -30,8 +34,8 @@ export const GetBooking = () => {
   
   console.log(selectedBooking);
 
-  const closeBookingModal = () => {
-    setBookingsModal(false);
+  const closeBookingListModal = () => {
+    setBookingListModal(false);
   }
   
   //open booking form modal
@@ -44,7 +48,7 @@ export const GetBooking = () => {
   }
 
   const handleGetBooking = async () => {
-    setBookingsModal(true);
+    setBookingListModal(true);
 
     const dateString = new Date(date).toISOString().split("T")[0];
     const timeValue = time === "18:00" ? "1800" : "2100";
@@ -76,12 +80,30 @@ export const GetBooking = () => {
         console.error("Error getting bookings:", error);
       }
 
+      
       // console.log(bookingsArray);
     }
     console.log(tempBookingsArray);
     setBookingsArray(tempBookingsArray);
     // console.log(bookingsArray);
+    
+
+    
   };
+
+  useEffect(() => {
+    if(bookingsArray.length < 15) {
+      setBookingBtnModal(true)
+      // setBookingBtnModal(true);
+      // console.log("theres is " + (15 - bookingsArray.length) + " available bookings");
+      let messageBookingsAvailable = "Theres are " + (15 - bookingsArray.length) + " available tables left. ";
+      setAvailableMessage(messageBookingsAvailable);
+    } else {
+      setBookingBtnModal(false)
+      let messageBookingsFull = "There are no more tables available at this time. Please choose another time or date.";
+      setAvailableMessage(messageBookingsFull);
+    }
+  }, [bookingsArray])
   
   const bookingsListHtml = bookingsArray.map((booking) => {
     return (
@@ -102,12 +124,14 @@ export const GetBooking = () => {
     );
   });
 
-  if(bookingsArray.length < 15) {
-    // console.log("theres is " + (15 - bookingsArray.length) + " available bookings");
-    var messageBookings = "Theres are " + (15 - bookingsArray.length) + " available tables left. ";
-  } else {
-    var messageBookings = "There are no more tables available at this time. Please choose another time or date."
-  }
+  // if(bookingsArray.length < 15) {
+
+  //   // setBookingBtnModal(true);
+  //   // console.log("theres is " + (15 - bookingsArray.length) + " available bookings");
+  //   var messageBookings = "Theres are " + (15 - bookingsArray.length) + " available tables left. ";
+  // } else {
+  //   var messageBookings = "There are no more tables available at this time. Please choose another time or date."
+  // }
 
 
   return (
@@ -156,14 +180,22 @@ export const GetBooking = () => {
         
       )}
 
-      {BookingModal && (
+      {bookingListModal && (
         <div className="booking-list-modal">
-          {bookingsListHtml}
-          {messageBookings}
-          <button onClick={closeBookingModal}>Close</button>
+          {/* {bookingsListHtml} */}
+          {availableMessage}
+          <button onClick={closeBookingListModal}>Close</button>
+
+          {bookingBtnModal && (
+            <BookingSystem />
+          )}
         </div>
 
       )}
+
+      {/* {bookingBtnModal && (
+        <BookingSystem />
+      )} */}
 
       {selectedBooking && (
         <EditBooking
