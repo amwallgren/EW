@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
-// import "../../Styles/Form.css";
+import "../../Styles/Form.css";
 import { Web3Context } from "../../Services/web3Service";
+import Spinner from "../Spinner";
 
 export const BookingForm = () => {
   const [name, setName] = useState("");
@@ -8,11 +9,13 @@ export const BookingForm = () => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [guests, setGuests] = useState(1);
+  const [showSpinner, setShowspinner] = useState(false);
 
   const { web3, contract } = useContext(Web3Context);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setShowspinner(true);
 
     const dateString = new Date(date).toISOString().split("T")[0];
     const timeValue = time === "18:00" ? "1800" : "2100";
@@ -35,8 +38,10 @@ export const BookingForm = () => {
       setDate("");
       setTime("");
       setGuests(1);
+      setShowspinner(false);
     } catch (error) {
       console.error("Error submitting booking:", error);
+      setShowspinner(false);
     }
   };
 
@@ -95,8 +100,9 @@ export const BookingForm = () => {
           max="6"
           required
         />
-        <button type="submit">Submit</button>
+        <button className="submitButton" type="submit">Submit</button>
       </form>
+      {showSpinner && <Spinner />}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './Layout.css';
-import ew from '../../images/ew.png';
+import ewModified from '../../images/ewModified.png';
 import HamburgerMenu from "./HamburgerMenu";
 
 
@@ -12,7 +12,7 @@ function Header () {
     <>
       <header>
 
-       <img className="ewHeader" src={ew}></img> 
+       <img className="ewHeader" src={ewModified}></img> 
         <HamburgerMenu />
 
 
