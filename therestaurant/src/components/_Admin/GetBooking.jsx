@@ -31,21 +31,21 @@ export const GetBooking = () => {
     console.log(booking);
     setSelectedBooking(booking);
   };
-  
+
   console.log(selectedBooking);
 
   const closeBookingListModal = () => {
     setBookingListModal(false);
-  }
-  
+  };
+
   //open booking form modal
   const handleBookingFormModal = () => {
     setBookingFormModal(true);
-  }
+  };
 
   const closeBookingFormModal = () => {
     setBookingFormModal(false);
-  }
+  };
 
   const handleGetBooking = async () => {
     setBookingListModal(true);
@@ -56,7 +56,6 @@ export const GetBooking = () => {
     if (web3 && contract) {
       var tempBookingsArray = [];
       try {
-        
         let bookingIds = await contract.methods.bookingCount().call();
         // console.log(bookingIds);
         // const bookingArray = [];
@@ -68,11 +67,10 @@ export const GetBooking = () => {
           // tempBookingsArray.push(bookings);
           // console.log(bookingArray);
           console.log(bookings);
-          if(bookings.time === timeValue && bookings.date === dateString) {
+          if (bookings.time === timeValue && bookings.date === dateString) {
             // console.log(bookings);
             tempBookingsArray.push(bookings);
           }
-          
         }
         // setBookingsArray(tempBookingsArray);
         // console.log(bookingId);
@@ -80,31 +78,31 @@ export const GetBooking = () => {
         console.error("Error getting bookings:", error);
       }
 
-      
       // console.log(bookingsArray);
     }
     console.log(tempBookingsArray);
     setBookingsArray(tempBookingsArray);
     // console.log(bookingsArray);
-    
-
-    
   };
 
   useEffect(() => {
-    if(bookingsArray.length < 15) {
-      setBookingBtnModal(true)
+    if (bookingsArray.length < 15) {
+      setBookingBtnModal(true);
       // setBookingBtnModal(true);
       // console.log("theres is " + (15 - bookingsArray.length) + " available bookings");
-      let messageBookingsAvailable = "Theres are " + (15 - bookingsArray.length) + " available tables left. ";
+      let messageBookingsAvailable =
+        "Theres are " +
+        (15 - bookingsArray.length) +
+        " available tables left. ";
       setAvailableMessage(messageBookingsAvailable);
     } else {
-      setBookingBtnModal(false)
-      let messageBookingsFull = "There are no more tables available at this time. Please choose another time or date.";
+      setBookingBtnModal(false);
+      let messageBookingsFull =
+        "There are no more tables available at this time. Please choose another time or date.";
       setAvailableMessage(messageBookingsFull);
     }
-  }, [bookingsArray])
-  
+  }, [bookingsArray]);
+
   const bookingsListHtml = bookingsArray.map((booking) => {
     return (
       <ul className="booking-list-ul" key={booking.id}>
@@ -118,26 +116,14 @@ export const GetBooking = () => {
         <li>
           <button onClick={() => handleEditBooking(booking)}>Edit</button>
         </li>
-        
-        <RemoveBooking bookingID={booking.id}/>
+
+        <RemoveBooking bookingID={booking.id} />
       </ul>
     );
   });
 
-  // if(bookingsArray.length < 15) {
-
-  //   // setBookingBtnModal(true);
-  //   // console.log("theres is " + (15 - bookingsArray.length) + " available bookings");
-  //   var messageBookings = "Theres are " + (15 - bookingsArray.length) + " available tables left. ";
-  // } else {
-  //   var messageBookings = "There are no more tables available at this time. Please choose another time or date."
-  // }
-
-
   return (
-
     <div>
-
       <div>
         <button onClick={handleBookingFormModal}>Get bookings</button>
       </div>
@@ -145,10 +131,10 @@ export const GetBooking = () => {
       {bookingFormModal && (
         <div>
           <input
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          required
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            required
           />
           <label>
             <input
@@ -170,14 +156,12 @@ export const GetBooking = () => {
             />
             21:00
           </label>
-          
+
           <button onClick={handleGetBooking} className="admin-btn">
             Search bookings
           </button>
           <button onClick={closeBookingFormModal}>Close</button>
-
         </div>
-        
       )}
 
       {bookingListModal && (
@@ -186,11 +170,8 @@ export const GetBooking = () => {
           {availableMessage}
           <button onClick={closeBookingListModal}>Close</button>
 
-          {bookingBtnModal && (
-            <BookingSystem />
-          )}
+          {bookingBtnModal && <BookingSystem />}
         </div>
-
       )}
 
       {/* {bookingBtnModal && (
@@ -203,8 +184,6 @@ export const GetBooking = () => {
           onClose={() => setSelectedBooking(null)}
         />
       )}
-      
     </div>
-    
   );
 };

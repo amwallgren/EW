@@ -29,13 +29,19 @@ export const BookingSystem = () => {
 
   return (
     <div>
-      <button className="bookingButton" onClick={handleBookTableClick}>Book a table</button>
-      <Modal className='modalForm' isOpen={isModalOpen} onRequestClose={closeModal}
-      style={{ overlay: { backgroundColor: 'rgba(0, 0, 0, 0, 0.558)'} }}>
-
-
+      <button className="bookingButton" onClick={handleBookTableClick}>
+        Book a table
+      </button>
+      <Modal
+        className="modalForm"
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        style={{ overlay: { backgroundColor: "rgba(0, 0, 0, 0, 0.558)" } }}
+      >
         {isModalOpen && <BookingForm onSubmit={handleBookingSubmit} />}
-        <button className="closeButton" onClick={closeModal}>Close</button>
+        {/* <button className="closeButton" onClick={closeModal}>
+          Close
+        </button> */}
       </Modal>
     </div>
   );
