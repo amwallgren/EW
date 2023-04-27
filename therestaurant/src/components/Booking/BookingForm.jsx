@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-// import "../../Styles/Form.css";
+import "../../Styles/Form.css";
 import { Web3Context } from "../../Services/web3Service";
 import Spinner from "../Spinner";
 
@@ -100,7 +100,7 @@ export const BookingForm = () => {
           max="6"
           required
         />
-        <button type="submit">Submit</button>
+        <button className="submitButton" type="submit">Submit</button>
       </form>
       {showSpinner && <Spinner />}
     </div>

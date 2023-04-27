@@ -1,6 +1,45 @@
 
+.modalForm {
+  width: 500px;
+  height: 300px;
+  padding: 20px;
+  position: relative;
+  top: 200px;
+  left: 300px;
+}
+
 .bookingForm {
+  width: 100%;
+  margin: 0;
+  padding: 15px;
+  border-radius: 5px;
   box-shadow: 0px 0px 40px 20px rgb(103, 160, 160, 0.7);
+}
+.bookingForm h2 {
+  text-align: center;
+  margin-top: 0;
+}
+.bookingForm label {
+  margin: 5px;
+  padding: 5px;
+}
+
+.bookingForm input[type='text'],
+.bookingForm input[type='email'],
+.bookingForm input[type='date'],
+.bookingForm input[type='number'] {
+  
+  padding: 8px;
+  margin-bottom: 16px;
+  border: 1px solid whitesmoke;
+}
+
+.bookingForm.radio,
+.bookingForm.checkbox {
+  position: relative;
+  padding-left: 28px;
+  margin-right: 16px;
+  cursor: pointer;
 }
 
 .bookingButton {
@@ -16,21 +55,6 @@
   box-shadow: 0px 0px 40px 20px rgb(103, 160, 160, 0.7);
   background-color: #437646;
 }
-.modalForm {
-  width: 500px;
-  height: 300px;
-  padding: 20px;
-  position: relative;
-  top: 200px;
-  left: 300px;
-  background-color: black;
-}
-
-
-.form-label {
-  font-weight: bold;
-  margin-bottom: 8px;
-}
 
 .form-input {
   width: 100%;
@@ -40,20 +64,31 @@
   margin-bottom: 16px;
 }
 
-.submit-button {
+.submitButton {
   width: 100%;
   padding: 12px 20px;
   font-weight: bold;
-  background-color: #4caf50;
-  color: white;
+  background-color: #437646;
+  color: whitesmoke;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
-.submit-button:hover {
-  background-color: #45a049;
+.submitButton:hover {
+  background-color: #63a967;
 }
+
+.closeButton:hover {
+  color: red;
+  
+}
+
+
+
+
+
+
 
 /* Step Indicator Styles */
 .step-indicator {
