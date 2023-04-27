@@ -2,11 +2,8 @@ import React, { useState, useContext } from "react";
 import "../../Styles/Form.css";
 import { Web3Context } from "../../Services/web3Service";
 import Spinner from "../Spinner";
-import { Step1Date } from "./Step1Date";
-import { Step2Time } from "./Step2Time";
-import { Step3Guests } from "./Step3Guests";
-import { Step4NameAndEmail } from "./Step4NameAndEmail";
 import { Step5Confirmation } from "./Step5Confirmation";
+import { BookingSteps } from "./BookingSteps";
 
 export const BookingForm = () => {
   const [name, setName] = useState("");
@@ -75,48 +72,6 @@ export const BookingForm = () => {
     }
   };
 
-  const renderStep = () => {
-    switch (step) {
-      case 1:
-        return <Step1Date date={date} setDate={setDate} />;
-      case 2:
-        return (
-          <Step2Time
-            time={time}
-            setTime={setTime}
-            handleGetBooking={handleGetBooking}
-            availableTables={availableTables}
-          />
-        );
-      case 3:
-        return <Step3Guests guests={guests} setGuests={setGuests} />;
-      case 4:
-        return (
-          <Step4NameAndEmail
-            name={name}
-            setName={setName}
-            lastName={lastName}
-            setLastName={setLastName}
-            email={email}
-            setEmail={setEmail}
-          />
-        );
-      case 6:
-        return (
-          <Step5Confirmation
-            name={name}
-            lastName={lastName}
-            email={email}
-            date={date}
-            time={time}
-            guests={guests}
-          />
-        );
-      default:
-        return null;
-    }
-  };
-
   const handleNext = () => {
     if (step < 4) {
       setStep(step + 1);
@@ -134,7 +89,23 @@ export const BookingForm = () => {
       <h2>Book a table</h2>
       {step !== 6 && (
         <form onSubmit={handleSubmit}>
-          {renderStep()}
+          <BookingSteps
+            step={step}
+            date={date}
+            setDate={setDate}
+            time={time}
+            setTime={setTime}
+            handleGetBooking={handleGetBooking}
+            availableTables={availableTables}
+            guests={guests}
+            setGuests={setGuests}
+            name={name}
+            setName={setName}
+            lastName={lastName}
+            setLastName={setLastName}
+            email={email}
+            setEmail={setEmail}
+          />
           <div className="stepButtons">
             {step > 1 && (
               <button className="prevButton" type="button" onClick={handlePrev}>
