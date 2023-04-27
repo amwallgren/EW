@@ -15,7 +15,7 @@
 
 * {
   background-color: rgb(0, 0, 0);
-  color: antiquewhite;
+  color: whitesmoke;
 
 }
 
@@ -28,10 +28,17 @@ footer {
   height: 30px;
   padding: 5px;
   font-size: small;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  
 }
+
 main {
   padding: 40px;
 }
+
 .gdprText {
   color: #6e4343;
   font-size: smaller;
