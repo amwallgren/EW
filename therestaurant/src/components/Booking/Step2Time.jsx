@@ -7,13 +7,14 @@ export const Step2Time = ({
   availableTables,
 }) => {
   const handleTimeChange = async (e) => {
-    setTime(e.target.value);
-    await handleGetBooking();
+    const newTime = e.target.value;
+    setTime(newTime);
+    await handleGetBooking(newTime);
   };
 
   return (
     <div>
-      <label>
+      <label style={{ display: "block" }}>
         <input
           type="Radio"
           name="time"
@@ -24,7 +25,7 @@ export const Step2Time = ({
         />
         Lunch
       </label>
-      <label>
+      <label style={{ display: "block" }}>
         <input
           type="Radio"
           name="time"
@@ -37,7 +38,11 @@ export const Step2Time = ({
       </label>
       {time && (
         <p>
-          {availableTables} table{availableTables === 1 ? "" : "s"} available
+          {availableTables > 0
+            ? `${availableTables} table${
+                availableTables === 1 ? "" : "s"
+              } available`
+            : "There are no tables available for this date"}
         </p>
       )}
     </div>

@@ -19,9 +19,9 @@ export const BookingForm = () => {
 
   const { web3, contract } = useContext(Web3Context);
 
-  const handleGetBooking = async () => {
+  const handleGetBooking = async (newTime) => {
     const dateString = new Date(date).toISOString().split("T")[0];
-    const timeValue = time === "18:00" ? "1800" : "2100";
+    const timeValue = newTime === "18:00" ? "1800" : "2100";
 
     const totalTables = 15;
 
@@ -125,7 +125,8 @@ export const BookingForm = () => {
               <button
                 className="nextButton"
                 type="button"
-                onClick={(e) => handleNext(e)}
+                onClick={handleNext}
+                disabled={step === 2 && availableTables <= 0}
               >
                 Next
               </button>
