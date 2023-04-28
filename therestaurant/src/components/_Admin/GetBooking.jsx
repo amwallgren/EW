@@ -3,7 +3,7 @@ import { useWeb3 } from "../../Services/web3Service";
 import { EditBooking } from "./EditBooking";
 import { RemoveBooking } from "./RemoveBooking";
 import { BookingSystem } from "../Booking/BookingSystem";
-
+import "../../Styles/getBooking.css";
 export const GetBooking = () => {
   const web3Context = useWeb3();
   const { web3, contract } = web3Context || {};
@@ -83,9 +83,18 @@ export const GetBooking = () => {
         <li className="booking-list-date">{booking.date}</li>
         <li className="booking-list-time">{booking.time}</li>
         <li className="booking-list-numOfGuests">{booking.numberOfGuests}</li>
-        <li>
+        {/* <li>
           <button onClick={() => handleEditBooking(booking)}>Edit</button>
-        </li>
+        </li> */}
+        <EditBooking
+        booking= {booking}
+        id = {booking.id}
+        editName = {booking.name}
+        editDate = {booking.date}
+        editTime = {booking.time}
+        editNumOfGuest = {booking.numberOfGuests}
+        onEditBooking={handleGetBooking} />
+
         <RemoveBooking
           bookingID={booking.id}
           onBookingRemoved={handleGetBooking}
