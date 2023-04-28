@@ -135,15 +135,15 @@ export const GetBooking = () => {
       {bookingListModal && (
         <div className="booking-list-modal">
           <div className="booking-list-modal-content">
-            <button onClick={closeBookingListModal}>Close</button>
             <h3>Booking List:</h3>
             {bookingsListHtml}
+            <button onClick={closeBookingListModal}>Close</button>
           </div>
         </div>
       )}
       {bookingBtnModal && (
         <div>
-          <p>{availableMessage}</p>
+ {/*          <p>{availableMessage}</p> */}
         </div>
       )}
       {bookingFormModal && (
