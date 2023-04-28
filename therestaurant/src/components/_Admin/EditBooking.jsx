@@ -3,7 +3,17 @@ import { useWeb3 } from "../../Services/web3Service";
 import { editBooking } from "../../Services/web3Service";
 import moment from "moment";
 
-export const EditBooking = ({ booking, onClose, onBookingUpdated, id, editName, editDate, editTime, editNumOfGuest, onEditBooking }) => {
+export const EditBooking = ({
+  booking,
+  onClose,
+  onBookingUpdated,
+  id,
+  editName,
+  editDate,
+  editTime,
+  editNumOfGuest,
+  onEditBooking,
+}) => {
   const [bookingId, setBookingId] = useState("");
   const [name, setName] = useState(editName);
   const [date, setDate] = useState(editDate);
@@ -16,11 +26,11 @@ export const EditBooking = ({ booking, onClose, onBookingUpdated, id, editName, 
 
   const showEditModal = () => {
     setEditModal(true);
-  }
+  };
 
   const CloseEditModal = () => {
     setEditModal(false);
-  }
+  };
 
   const fetchBooking = async () => {
     if (web3 && contract && id) {
@@ -72,12 +82,10 @@ export const EditBooking = ({ booking, onClose, onBookingUpdated, id, editName, 
 
   return (
     <div className="edit-booking-container">
-
       <div>
         <button onClick={showEditModal}>Edit</button>
       </div>
 
-      
       {EditModal && (
         <div className="edit-bookings-modal">
           <label>
@@ -126,9 +134,6 @@ export const EditBooking = ({ booking, onClose, onBookingUpdated, id, editName, 
           <button onClick={CloseEditModal}>Cancel</button>
         </div>
       )}
-      
-      
-      
     </div>
   );
 };

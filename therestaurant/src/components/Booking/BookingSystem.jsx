@@ -39,9 +39,6 @@ export const BookingSystem = () => {
         style={{ overlay: { backgroundColor: "rgba(0, 0, 0, 0, 0.558)" } }}
       >
         {isModalOpen && <BookingForm onSubmit={handleBookingSubmit} />}
-        {/* <button className="closeButton" onClick={closeModal}>
-          Close
-        </button> */}
       </Modal>
     </div>
   );

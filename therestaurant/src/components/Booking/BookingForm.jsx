@@ -133,10 +133,14 @@ export const BookingForm = () => {
               </button>
             )}
             {step === 4 && (
-              <><button className="submitButton" type="submit">
-                Submit
-              </button>
-              <Link to={'/gdpr'} className="gdprFormLink">Learn more about how we work with GDPR</Link></>
+              <>
+                <button className="submitButton" type="submit">
+                  Submit
+                </button>
+                <Link to={"/gdpr"} className="gdprFormLink">
+                  Learn more about how we work with GDPR
+                </Link>
+              </>
             )}
           </div>
         </form>

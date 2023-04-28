@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { CreateRestaurant } from "./CreateRestaurant";
 import { GetBooking } from "./GetBooking";
-import './Admin.css';
+import "./Admin.css";
 
 export const Admin = () => {
   const [restaurantId, setRestaurantId] = useState(null);

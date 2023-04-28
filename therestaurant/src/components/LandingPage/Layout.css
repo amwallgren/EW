@@ -1,19 +1,18 @@
-
 .ewHeader {
-    width: 90%;
-    position: relative;
-    left: -1rem;
+  width: 90%;
+  position: relative;
+  left: -1rem;
 }
 
 .navBar {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    top: 0;
-    right: 0;
-    left: 0;
-    padding: 10px;
-    z-index: 2;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 10px;
+  z-index: 2;
 }
 
 .navBar a {
@@ -23,7 +22,7 @@
   margin-top: 10px;
 }
 .navBar a:hover {
-    color: red;
+  color: red;
 }
 
 .icon {
@@ -32,14 +31,13 @@
   background-color: transparent;
   cursor: pointer;
   display: none;
-
-  }
+}
 
 @media screen and (max-width: 600px) {
-    .navBar a:not(:first-child) {
-        display: none;
-    }
-    .icon {
-        display: none;
-    }
+  .navBar a:not(:first-child) {
+    display: none;
+  }
+  .icon {
+    display: none;
+  }
 }

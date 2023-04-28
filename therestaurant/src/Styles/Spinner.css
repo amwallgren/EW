@@ -1,19 +1,17 @@
- .spinner {
-    display: inline-block;
-    position: relative;
-  
-    margin: 15px auto;
-    width: 30px;
-    height: 30px;
-    border: 2px solid whitesmoke;
-    border-top-color: rgb(116, 228, 232);
-    border-radius: 50%;
-    animation: spin 2s ease-in-out infinite;
-    
+.spinner {
+  display: inline-block;
+  position: relative;
+
+  margin: 15px auto;
+  width: 30px;
+  height: 30px;
+  border: 2px solid whitesmoke;
+  border-top-color: rgb(116, 228, 232);
+  border-radius: 50%;
+  animation: spin 2s ease-in-out infinite;
+}
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
   }
-  @keyframes spin {
-    to {
-        -webkit-transform: rotate(360deg);
-    }
-  }
-  
+}

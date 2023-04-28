@@ -1,26 +1,26 @@
 import React, { useState } from "react";
-import './Layout.css';
+import "./Layout.css";
 import { Link } from "react-router-dom";
 
 function HamburgerMenu() {
-    const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
 
-    const toggleMenu = () => {
-        setShowMenu(!showMenu);
-    }
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
 
-    return (
-        <>
-        <nav className="navBar">
-            <Link to="/menu">Our Menu</Link>
-            <Link to="/contact">Contact Us</Link>
-            <Link to='/booking'>Get me a table</Link>
+  return (
+    <>
+      <nav className="navBar">
+        <Link to="/menu">Our Menu</Link>
+        <Link to="/contact">Contact Us</Link>
+        <Link to="/booking">Get me a table</Link>
 
         <button className="icon" onClick={toggleMenu}>
-            <i className="fa fa-bars"></i>
+          <i className="fa fa-bars"></i>
         </button>
-        </nav>
-        </>
-    )
+      </nav>
+    </>
+  );
 }
 export default HamburgerMenu;

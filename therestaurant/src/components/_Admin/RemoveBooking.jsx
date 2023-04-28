@@ -16,7 +16,6 @@ export const RemoveBooking = ({ bookingID, onBookingRemoved }) => {
           } else {
             console.log("Booking removed successfully!");
             setBookingId("");
-            // Call the onBookingRemoved prop after the removal is successful
             onBookingRemoved();
           }
         });
@@ -28,13 +27,6 @@ export const RemoveBooking = ({ bookingID, onBookingRemoved }) => {
 
   return (
     <div className="remove-booking-container">
-      {/* <input
-        type="text"
-        className="remove-booking-input"
-        placeholder="Booking ID"
-        value={bookingId}
-        onChange={(event) => setBookingId(event.target.value)}
-      /> */}
       <button onClick={handleRemoveBooking} className="admin-btn">
         Remove
       </button>

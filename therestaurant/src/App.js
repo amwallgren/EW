@@ -1,26 +1,28 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import { LandingPage } from "./components/LandingPage";
 import { BookingSystem } from "./components/Booking/BookingSystem";
 import Contact from "./components/contact/Contact";
 import { Menu } from "./components/Menu/Menu";
-import { CreateRestaurant } from "./components/CreateRestaurant";
+import { Admin } from "./components/_Admin/Admin";
+import Header from "./components/LandingPage/Header";
+import { Footer } from "./components/LandingPage/Footer";
+import Gdpr from "./components/LandingPage/Gdpr";
 
 function App() {
   return (
     <div className="App">
-      <Contact />
-      <h1>Restaurant Booking System</h1>
-      <BookingSystem />
-      <CreateRestaurant />
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/bookingsystem" element={<BookingSystem />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/menu" element={<Menu />} />
-      </Routes>
+      <Header />
+      <main>
+        <Routes>
+          <Route path="/booking" element={<BookingSystem />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/menu" element={<Menu />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/gdpr" element={<Gdpr />} />
+        </Routes>
+      </main>
+      <Footer />
     </div>
   );
 }
 export default App;
-
