@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { CreateRestaurant } from "./CreateRestaurant";
 import { GetBooking } from "./GetBooking";
+import './Admin.css';
 
 export const Admin = () => {
   const [restaurantId, setRestaurantId] = useState(null);
@@ -12,7 +13,7 @@ export const Admin = () => {
   };
 
   return (
-    <div className="admin-container">
+    <div className="adminContainer">
       <h1>Admin Page</h1>
       {!isRestaurantCreated && (
         <CreateRestaurant onRestaurantCreated={handleRestaurantCreated} />

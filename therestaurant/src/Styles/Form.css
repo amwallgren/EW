@@ -98,8 +98,46 @@ input {
 
 
 
+.gdprFormLink {
+  margin-top: 1rem;
+  color: red;
+  font-size: 0.5rem;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0);
+}
+.contactBox {
+  position: relative;
+  right: 1.01rem;
+}
 
 
+.sendButton {
+  margin-top: 1rem;
+}
+.sendButton:hover {
+  color: #63a967;
+}
+
+
+.getBookingContainer {
+padding: 5px;
+
+}
+.booking-list-ul {
+  list-style-type: none;
+}
+
+label {
+  margin-right: 0.5rem;
+}
+.selectTime {
+  border: 1px solid whitesmoke;
+  padding: 4px;
+  margin: 5px;
+}
+.searchBookingButton:hover {
+  color: #4caf50;
+}
 
 
 /* Step Indicator Styles */
@@ -148,24 +186,4 @@ input {
 
 .nav-button:hover {
   background-color: #ddd;
-}
-
-.gdprFormLink {
-  margin-top: 1rem;
-  color: red;
-  font-size: 0.5rem;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0);
-}
-.contactBox {
-  position: relative;
-  right: 1.01rem;
-}
-
-
-.sendButton {
-  margin-top: 1rem;
-}
-.sendButton:hover {
-  color: #63a967;
 }

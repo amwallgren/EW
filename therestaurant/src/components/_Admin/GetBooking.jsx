@@ -3,7 +3,7 @@ import { useWeb3 } from "../../Services/web3Service";
 import { EditBooking } from "./EditBooking";
 import { RemoveBooking } from "./RemoveBooking";
 import { BookingSystem } from "../Booking/BookingSystem";
-import "../../Styles/getBooking.css";
+import "../../Styles/Form.css";
 export const GetBooking = () => {
   const web3Context = useWeb3();
   const { web3, contract } = web3Context || {};
@@ -103,10 +103,10 @@ export const GetBooking = () => {
     );
   });
   return (
-    <div className="get-booking-container">
-      <h2 className="get-booking-title">Get Booking</h2>
+    <div className="getBookingContainer">
+      <h2 className="get-booking-title">Find a booking:</h2>
       <form>
-        <label htmlFor="date">Date</label>
+        <label htmlFor="date">Date:</label>
         <input
           type="date"
           id="date"
@@ -114,9 +114,9 @@ export const GetBooking = () => {
           value={date}
           onChange={(e) => setDate(e.target.value)}
           required
-        />
-        <label htmlFor="time">Time</label>
-        <select
+        /> <br /> <br />
+        <label htmlFor="time">Time:</label>
+        <select className="selectTime"
           id="time"
           name="time"
           value={time}
@@ -127,15 +127,16 @@ export const GetBooking = () => {
           <option value="18:00">18:00</option>
           <option value="21:00">21:00</option>
         </select>
-        <button type="button" onClick={handleGetBooking}>
-          Search Bookings
-        </button>
-      </form>
+        <br /> <br />
+        <button className="searchBookingButton" type="button" onClick={handleGetBooking}>
+          Search
+        </button> 
+      </form> <br />
       {bookingListModal && (
         <div className="booking-list-modal">
           <div className="booking-list-modal-content">
             <button onClick={closeBookingListModal}>Close</button>
-            <h3>Booking List</h3>
+            <h3>Booking List:</h3>
             {bookingsListHtml}
           </div>
         </div>
