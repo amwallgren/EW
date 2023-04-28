@@ -1,6 +1,8 @@
 
 .ewHeader {
-    width: 100%;
+    width: 90%;
+    position: relative;
+    left: -1rem;
 }
 
 .navBar {

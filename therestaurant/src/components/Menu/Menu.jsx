@@ -11,21 +11,59 @@ import './Menu.css';
 
 //to-do: add divs around everything for styling
 // figure out how to attach "fact-field" next to pictures.
-// fix sizing
 
 export const Menu = () => {
     return (
         <>
         <div className='menuWrapper'>
-            <img className='centuryEgg' src={centuryEgg}></img>
-            <img className='cuyRoastedGuineaPig' src={cuyRoastedGuineaPig}></img>
-            <img className='fermentedBirdInSeal' src={fermentedBirdInSeal}></img>
-            <img className='illegalCheese' src={illegalCheese}></img>
-            <img className='lobster' src={lobster}></img>
-            <img className='mellifiedMan' src={mellifiedMan}></img>
-            <img className='pickledSheepsEye' src={pickledSheepsEye}></img>
-            <img className='snails' src={snails}></img> <br />
-            <img className='surstromming' src={surstromming}></img> <br />
+
+            <div>
+                
+                <img className='centuryEgg' src={centuryEgg}></img>
+                <p>century egg</p>
+            </div>
+
+            <div>
+                
+                <img className='cuyRoastedGuineaPig' src={cuyRoastedGuineaPig}></img>
+                <p>Cuy, a roasted gunea pig delicacy from peru, I think</p>
+            </div>
+
+            <div>
+                <img className='fermentedBirdInSeal' src={fermentedBirdInSeal}></img>
+                <p>Kiviak, a fermented bird in seal skin, Island, I think</p>
+            </div>
+
+            <div>
+                <img className='illegalCheese' src={illegalCheese}></img>
+                <p>illegal in the EU cheese, larves, nice. </p>
+            </div>
+
+            <div>
+                <img className='lobster' src={lobster}></img>
+                <p>Lobster, for the weak</p>
+            </div>
+
+            <div>
+                <img className='mellifiedMan' src={mellifiedMan}></img>
+                <p>mellification is sort of mummufication. Healing properties. </p>
+            </div>
+
+            <div>
+                <img className='pickledSheepsEye' src={pickledSheepsEye}></img>
+                <p>the best hangoover cure you can get for money today</p>
+            </div>
+
+            <div>
+                <img className='snails' src={snails}></img>
+                <p>snails, God said theyre not food. no need to count calories then. </p>
+            </div> 
+
+            <div>
+                <img className='surstromming' src={surstromming}></img> 
+                <p>surströmming, Swedish ""delicacy"". To be enjoyed in our surströmming-booth. </p>
+            </div>
+
         </div>
         </>
     )
