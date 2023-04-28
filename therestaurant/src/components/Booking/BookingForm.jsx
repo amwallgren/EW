@@ -4,6 +4,7 @@ import { Web3Context } from "../../Services/web3Service";
 import Spinner from "../Spinner";
 import { Step5Confirmation } from "./Step5Confirmation";
 import { BookingSteps } from "./BookingSteps";
+import { Link } from "react-router-dom";
 
 export const BookingForm = () => {
   const [name, setName] = useState("");
@@ -132,9 +133,10 @@ export const BookingForm = () => {
               </button>
             )}
             {step === 4 && (
-              <button className="submitButton" type="submit">
+              <><button className="submitButton" type="submit">
                 Submit
               </button>
+              <Link to={'/gdpr'} className="gdprFormLink">Learn more about how we work with GDPR</Link></>
             )}
           </div>
         </form>

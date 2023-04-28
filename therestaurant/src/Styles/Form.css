@@ -25,6 +25,12 @@
   padding: 5px;
 }
 
+input {
+  border: 1px solid whitesmoke;
+  margin: 5px;
+  padding: 5px;
+}
+
 .bookingForm input[type='text'],
 .bookingForm input[type='email'],
 .bookingForm input[type='date'],
@@ -86,6 +92,9 @@
   color: red;
   
 }
+.contactTextArea {
+  box-shadow: 0px 0px 40px 20px rgba(172, 41, 41, 0.5);
+}
 
 
 
@@ -139,4 +148,24 @@
 
 .nav-button:hover {
   background-color: #ddd;
+}
+
+.gdprFormLink {
+  margin-top: 1rem;
+  color: red;
+  font-size: 0.5rem;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0);
+}
+.contactBox {
+  position: relative;
+  right: 1.01rem;
+}
+
+
+.sendButton {
+  margin-top: 1rem;
+}
+.sendButton:hover {
+  color: #63a967;
 }

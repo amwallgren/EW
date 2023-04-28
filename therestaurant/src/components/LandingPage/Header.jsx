@@ -6,7 +6,6 @@ import HamburgerMenu from "./HamburgerMenu";
 
 
 function Header () {
-//  const [restaurantId] = useState(null)
 
   return ( 
     <>

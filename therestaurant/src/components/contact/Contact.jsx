@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Spinner from "../Spinner";
+import { Link } from "react-router-dom";
 
 function Contact() {
 
@@ -25,7 +26,7 @@ function Contact() {
  }
 
     return (
-        <div className="contact-box">
+        <div className="contactBox">
             <h2>Contact us</h2>
             <form className="contact-form" onSubmit={handleSubmit}>
                 <input
@@ -44,14 +45,16 @@ function Contact() {
                 />
                 <br></br><br></br>
                 <textarea 
-                id="contact-textarea" 
+                className="contactTextArea" 
                 cols="30" 
                 rows="10"
                 value={textarea}
                 onChange={(e) => {setTextarea(e.target.value)}}
                 ></textarea>
                 <br></br>
-                <button>Send</button>
+                <Link to={'/gdpr'} className="gdprFormLink">Learn more about how we work with GDPR</Link>
+                <br></br>
+                <button className="sendButton">Send</button>
                 {spinner && <Spinner />}
             </form>
             <h3>{contactMessage}</h3>
