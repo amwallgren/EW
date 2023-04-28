@@ -87,13 +87,14 @@ export const GetBooking = () => {
           <button onClick={() => handleEditBooking(booking)}>Edit</button>
         </li> */}
         <EditBooking
-        booking= {booking}
-        id = {booking.id}
-        editName = {booking.name}
-        editDate = {booking.date}
-        editTime = {booking.time}
-        editNumOfGuest = {booking.numberOfGuests}
-        onEditBooking={handleGetBooking} />
+          booking={booking}
+          id={booking.id}
+          editName={booking.name}
+          editDate={booking.date}
+          editTime={booking.time}
+          editNumOfGuest={booking.numberOfGuests}
+          onEditBooking={handleGetBooking}
+        />
 
         <RemoveBooking
           bookingID={booking.id}
@@ -114,9 +115,11 @@ export const GetBooking = () => {
           value={date}
           onChange={(e) => setDate(e.target.value)}
           required
-        /> <br /> <br />
+        />{" "}
+        <br /> <br />
         <label htmlFor="time">Time:</label>
-        <select className="selectTime"
+        <select
+          className="selectTime"
           id="time"
           name="time"
           value={time}
@@ -128,10 +131,15 @@ export const GetBooking = () => {
           <option value="21:00">21:00</option>
         </select>
         <br /> <br />
-        <button className="searchBookingButton" type="button" onClick={handleGetBooking}>
+        <button
+          className="searchBookingButton"
+          type="button"
+          onClick={handleGetBooking}
+        >
           Search
-        </button> 
-      </form> <br />
+        </button>
+      </form>{" "}
+      <br />
       {bookingListModal && (
         <div className="booking-list-modal">
           <div className="booking-list-modal-content">
@@ -141,11 +149,7 @@ export const GetBooking = () => {
           </div>
         </div>
       )}
-      {bookingBtnModal && (
-        <div>
- {/*          <p>{availableMessage}</p> */}
-        </div>
-      )}
+      {bookingBtnModal && <div>{/*          <p>{availableMessage}</p> */}</div>}
       {bookingFormModal && (
         <BookingSystem
           onClose={closeBookingFormModal}
