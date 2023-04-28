@@ -1,7 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useWeb3 } from "../../Services/web3Service";
-import { useState, useEffect } from "react";
-import "../_Admin/getBooking.css";
 import { EditBooking } from "./EditBooking";
 import { RemoveBooking } from "./RemoveBooking";
 import { BookingSystem } from "../Booking/BookingSystem";
@@ -11,20 +9,12 @@ export const GetBooking = () => {
   const { web3, contract } = web3Context || {};
 
   const [bookingsArray, setBookingsArray] = useState([]);
-
-  //modals
   const [bookingListModal, setBookingListModal] = useState(false);
   const [bookingBtnModal, setBookingBtnModal] = useState(false);
   const [bookingFormModal, setBookingFormModal] = useState(false);
-  // const showBookingModal = () => {
-  //   setBookingsModal(true);
-  // };
-
   const [time, setTime] = useState(0);
   const [date, setDate] = useState("");
-  //selected booking for edit
   const [selectedBooking, setSelectedBooking] = useState(null);
-
   const [availableMessage, setAvailableMessage] = useState("");
 
   const handleEditBooking = (booking) => {
@@ -38,10 +28,9 @@ export const GetBooking = () => {
     setBookingListModal(false);
   };
 
-  //open booking form modal
-  const handleBookingFormModal = () => {
-    setBookingFormModal(true);
-  };
+  // const handleBookingFormModal = () => {
+  //   setBookingFormModal(true);
+  // };
 
   const closeBookingFormModal = () => {
     setBookingFormModal(false);
@@ -57,39 +46,22 @@ export const GetBooking = () => {
       var tempBookingsArray = [];
       try {
         let bookingIds = await contract.methods.bookingCount().call();
-        // console.log(bookingIds);
-        // const bookingArray = [];
         for (let i = 0; i <= bookingIds; i++) {
-          // console.log(i);
-          // const bookingId = bookingIds[i];
-          // let bookingId = bookingIds[i];
           let bookings = await contract.methods.bookings(i).call();
-          // tempBookingsArray.push(bookings);
-          // console.log(bookingArray);
-          console.log(bookings);
           if (bookings.time === timeValue && bookings.date === dateString) {
-            // console.log(bookings);
             tempBookingsArray.push(bookings);
           }
         }
-        // setBookingsArray(tempBookingsArray);
-        // console.log(bookingId);
       } catch (error) {
         console.error("Error getting bookings:", error);
       }
-
-      // console.log(bookingsArray);
+      setBookingsArray(tempBookingsArray);
     }
-    console.log(tempBookingsArray);
-    setBookingsArray(tempBookingsArray);
-    // console.log(bookingsArray);
   };
 
   useEffect(() => {
     if (bookingsArray.length < 15) {
       setBookingBtnModal(true);
-      // setBookingBtnModal(true);
-      // console.log("theres is " + (15 - bookingsArray.length) + " available bookings");
       let messageBookingsAvailable =
         "Theres are " +
         (15 - bookingsArray.length) +
@@ -111,77 +83,71 @@ export const GetBooking = () => {
         <li className="booking-list-date">{booking.date}</li>
         <li className="booking-list-time">{booking.time}</li>
         <li className="booking-list-numOfGuests">{booking.numberOfGuests}</li>
-        {/* <EditBooking />
-        <RemoveBooking /> */}
         <li>
           <button onClick={() => handleEditBooking(booking)}>Edit</button>
         </li>
-
-        <RemoveBooking bookingID={booking.id} />
+        <RemoveBooking
+          bookingID={booking.id}
+          onBookingRemoved={handleGetBooking}
+        />
       </ul>
     );
   });
-
   return (
-    <div>
-      <div>
-        <button onClick={handleBookingFormModal}>Get bookings</button>
-      </div>
-
-      {bookingFormModal && (
-        <div>
-          <input
-            type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            required
-          />
-          <label>
-            <input
-              type="radio"
-              name="time"
-              value="18:00"
-              checked={time === "18:00"}
-              onChange={(e) => setTime(e.target.value)}
-            />
-            18:00
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="time"
-              value="21:00"
-              checked={time === "21:00"}
-              onChange={(e) => setTime(e.target.value)}
-            />
-            21:00
-          </label>
-
-          <button onClick={handleGetBooking} className="admin-btn">
-            Search bookings
-          </button>
-          <button onClick={closeBookingFormModal}>Close</button>
-        </div>
-      )}
-
+    <div className="get-booking-container">
+      <h2 className="get-booking-title">Get Booking</h2>
+      <form>
+        <label htmlFor="date">Date</label>
+        <input
+          type="date"
+          id="date"
+          name="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+          required
+        />
+        <label htmlFor="time">Time</label>
+        <select
+          id="time"
+          name="time"
+          value={time}
+          onChange={(e) => setTime(e.target.value)}
+          required
+        >
+          <option value="">--Select Time--</option>
+          <option value="18:00">18:00</option>
+          <option value="21:00">21:00</option>
+        </select>
+        <button type="button" onClick={handleGetBooking}>
+          Search Bookings
+        </button>
+      </form>
       {bookingListModal && (
         <div className="booking-list-modal">
-          {bookingsListHtml}
-          {availableMessage}
-          <button onClick={closeBookingListModal}>Close</button>
-
-          {bookingBtnModal && <BookingSystem />}
+          <div className="booking-list-modal-content">
+            <button onClick={closeBookingListModal}>Close</button>
+            <h3>Booking List</h3>
+            {bookingsListHtml}
+          </div>
         </div>
       )}
-
-      {/* {bookingBtnModal && (
-        <BookingSystem />
-      )} */}
-
+      {bookingBtnModal && (
+        <div>
+          <p>{availableMessage}</p>
+        </div>
+      )}
+      {bookingFormModal && (
+        <BookingSystem
+          onClose={closeBookingFormModal}
+          bookingDate={date}
+          bookingTime={time}
+        />
+      )}
       {selectedBooking && (
         <EditBooking
           booking={selectedBooking}
           onClose={() => setSelectedBooking(null)}
+          onBookingUpdated={handleGetBooking}
         />
       )}
     </div>

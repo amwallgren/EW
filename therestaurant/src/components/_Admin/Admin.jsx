@@ -1,22 +1,23 @@
 import React, { useState } from "react";
 import { CreateRestaurant } from "./CreateRestaurant";
 import { GetBooking } from "./GetBooking";
-import { BookingSystem } from "../Booking/BookingSystem";
 
 export const Admin = () => {
   const [restaurantId, setRestaurantId] = useState(null);
+  const [isRestaurantCreated, setIsRestaurantCreated] = useState(false);
 
   const handleRestaurantCreated = (id) => {
     setRestaurantId(id);
+    setIsRestaurantCreated(true);
   };
 
   return (
     <div className="admin-container">
-      <h1>Admin</h1>
-      {!restaurantId && (
+      <h1>Admin Page</h1>
+      {!isRestaurantCreated && (
         <CreateRestaurant onRestaurantCreated={handleRestaurantCreated} />
       )}
-      {restaurantId && <GetBooking restaurantId={restaurantId} />}
+      <GetBooking restaurantId={restaurantId} />
     </div>
   );
 };
