@@ -51,7 +51,11 @@ export const Menu = () => {
 
             <div>
                 <img className='pickledSheepsEye' src={pickledSheepsEye}></img>
-                <p>the best hangoover cure you can get for money today</p>
+                <p>Pickled sheeps eye in tomato juice. A Mongolian delicacy, <br />
+                    sometimes referred to as the "Mongolian Mary". <br />
+                    This soup originated from Djingis Khans era,
+                    and is said to be a great hangover cure.
+                </p>
             </div>
 
             <div>
@@ -61,7 +65,7 @@ export const Menu = () => {
 
             <div>
                 <img className='surstromming' src={surstromming}></img> 
-                <p>surströmming, Swedish ""delicacy"". To be enjoyed in our surströmming-booth. </p>
+                <p className='surstrommingText'>surströmming, Swedish ""delicacy"". To be enjoyed in our surströmming-booth. </p>
             </div>
 
         </div>

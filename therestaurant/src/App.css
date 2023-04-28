@@ -1,15 +1,7 @@
 
 .App {
   text-align: center;
-
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 
 /* HUMAN WRITTEN CODE STARTS HERE */
 
@@ -20,11 +12,10 @@
 }
 
 footer {
-/*   border: 1px solid whitesmoke; */
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 100%;
+  width: 95%;
   height: 30px;
   padding: 5px;
   font-size: small;
