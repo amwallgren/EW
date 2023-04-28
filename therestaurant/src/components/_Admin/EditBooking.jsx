@@ -3,7 +3,7 @@ import { useWeb3 } from "../../Services/web3Service";
 import { editBooking } from "../../Services/web3Service";
 import moment from "moment";
 
-export const EditBooking = ({ booking, onClose }) => {
+export const EditBooking = ({ booking, onClose, onBookingUpdated }) => {
   const [bookingId, setBookingId] = useState("");
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
@@ -30,33 +30,9 @@ export const EditBooking = ({ booking, onClose }) => {
     fetchBooking();
   }, [bookingId]);
 
-  // const handleEditBooking = async () => {
-  //   if (web3 && contract && bookingId) {
-  //     const bookingData = {
-  //       id: bookingId,
-  //       numberOfGuests: 3,
-  //       name,
-  //       date,
-  //       time,
-  //     };
-  //     try {
-  //       await editBooking(web3, contract, bookingData, (error) => {
-  //         if (error) {
-  //           console.error("Error editing booking:", error);
-  //         } else {
-  //           console.log(bookingData);
-  //           console.log("Booking edited successfully!");
-  //         }
-  //       });
-  //     } catch (error) {
-  //       console.error("Error editing booking:", error);
-  //     }
-  //   };
-  // };
-
   const handleSave = async () => {
     if (web3 && contract) {
-      const formattedTime = moment(time, 'HH:mm').format('HHmm');
+      const formattedTime = moment(time, "HH:mm").format("HHmm");
       const bookingData = {
         id: booking.id,
         numberOfGuests: numberOfGuests,
@@ -72,14 +48,14 @@ export const EditBooking = ({ booking, onClose }) => {
             console.log(bookingData);
             console.log("Booking edited successfully!");
             onClose();
-            window.location.reload();
+            // Call the onBookingUpdated prop after the update is successful
+            onBookingUpdated();
           }
         });
       } catch (error) {
         console.error("Error editing booking:", error);
       }
     }
-    // location.reload();
   };
 
   return (

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useWeb3 } from "../../Services/web3Service";
 import { removeBooking } from "../../Services/web3Service";
 
-export const RemoveBooking = ({ bookingID }) => {
+export const RemoveBooking = ({ bookingID, onBookingRemoved }) => {
   const [bookingId, setBookingId] = useState("");
   const web3Context = useWeb3();
   const { web3, contract } = web3Context || {};
@@ -10,14 +10,14 @@ export const RemoveBooking = ({ bookingID }) => {
   const handleRemoveBooking = async () => {
     if (web3 && contract && bookingID) {
       try {
-        const booking = await contract.methods.bookings(bookingID).call();
-        console.log(`Booking details to be removed:`, booking);
         await removeBooking(web3, contract, bookingID, (error) => {
           if (error) {
             console.error("Error removing booking:", error);
           } else {
             console.log("Booking removed successfully!");
             setBookingId("");
+            // Call the onBookingRemoved prop after the removal is successful
+            onBookingRemoved();
           }
         });
       } catch (error) {
