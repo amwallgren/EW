@@ -3,8 +3,7 @@
 
 Libraries som vi har använt.
 
-React-router-dom
-React-Modal
-Web3
-
+React-router-dom <br>
+React-Modal <br>
+Web3 
 
